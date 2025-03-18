@@ -1,0 +1,6 @@
+**/vendor/
+**/dist/
+**/node_modules/
+**/.zed
+**/.parcel-cache
+.DS_Store

@@ -1,0 +1,29 @@
+.mh-admin {
+    &__events {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__list-fields {
+        display: flex;
+        flex-direction: column;
+    }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+    }
+    .input-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        &.input {
+            &--selectable {
+                display: inline-flex;
+                flex-direction: unset;
+                align-items: center;
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "mh/scheduler",
+  "version": "0.0.1",
+  "description": "scheduler plugion for mustardhub",
+  "type": "wordpress-plugin",
+  "license": "GPL-3.0-or-later",
+  "autoload": {
+    "psr-4": {
+      "MHS\\": "inc/"
+    }
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^7.0"
+  },
+  "require": {
+    "tplaner/when": "^3.1"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mh-scheduler",
+  "version": "1.0.0",
+  "description": "",
+  "source": [
+    "assets/src/scripts/mh-scheduler-admin-main.js",
+    "assets/src/scripts/mh-scheduler-main.js",
+    "assets/src/styles/mh-scheduler-admin-main.scss",
+    "assets/src/styles/mh-scheduler-main.scss"
+  ],
+  "scripts": {
+    "watch": "rm -rf ./assets/dist && rm -rf ./.parcel-cache && parcel watch --dist-dir ./assets/dist",
+    "build": "rm -rf ./assets/dist && rm -rf ./.parcel-cache && parcel build --dist-dir ./assets/dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.12.0",
+    "parcel": "^2.12.0"
+  }
+}

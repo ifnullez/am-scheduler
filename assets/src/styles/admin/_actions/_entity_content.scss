@@ -1,0 +1,29 @@
+.mh-scheduler {
+    &__form {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 10px;
+        align-items: baseline;
+
+        &--content {
+            flex: 1 1 calc(80% - 20px);
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            padding: 7px;
+            background-color: #fff;
+            border-radius: 0.3rem;
+            align-self: flex-start;
+        }
+
+        &--sidebar {
+            flex: 1 1 calc(20% - 20px);
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            padding: 7px;
+            background-color: #fff;
+            border-radius: 0.3rem;
+        }
+    }
+}

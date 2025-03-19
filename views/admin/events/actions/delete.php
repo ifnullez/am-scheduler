@@ -1,4 +1,8 @@
 <?php
+/**
+ * @var array<string, mixed> $data Result of BaseModel::getAllAsOptionsArray()
+ */
+
 use AM\Scheduler\Events\Models\EventsModel;
 
 $id = !empty($data["item"]->id) ? $data["item"]->id : null;

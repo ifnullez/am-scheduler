@@ -4,7 +4,7 @@
  * Main plugin config class
  */
 
-namespace AM\Scheduler\Configs;
+namespace AM\Scheduler\Base\Configs;
 
 use AM\Scheduler\Base\Traits\Singleton;
 
@@ -13,6 +13,7 @@ class Config
     use Singleton;
 
     public ?Path $path;
+    public ?Uri $uri;
     private ?string $root_file;
     private ?string $root_dir;
 
@@ -23,7 +24,13 @@ class Config
 
         if (!empty($this->root_file) && !empty($this->root_dir)) {
             $this->path = Path::getInstance($this->root_file, $this->root_dir);
+            $this->uri = Uri::getInstance($this->root_file, $this->root_dir);
         }
+    }
+
+    public function getRootFile(): ?string
+    {
+        return $this->root_file;
     }
 
     public function getVersion(): ?string

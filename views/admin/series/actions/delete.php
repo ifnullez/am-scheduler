@@ -1,4 +1,7 @@
 <?php
+/**
+ * @var array<string, mixed> $data Result of BaseModel::getAllAsOptionsArray()
+ */
 use AM\Scheduler\Series\Models\SeriesModel;
 
 $id = !empty($data["item"]->id) ? $data["item"]->id : null;

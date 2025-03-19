@@ -17,7 +17,7 @@ class EventsAdminPage extends AbstractPage
             "admin_menu",
             fn() => add_menu_page(
                 __("Events", "ams"),
-                __("Scheduler", "ams"),
+                __("Events", "ams"),
                 "manage_options",
                 $this->slug,
                 [$this, "callback"],

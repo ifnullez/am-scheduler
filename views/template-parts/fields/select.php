@@ -1,38 +1,43 @@
 <?php
+/**
+ * @var array<string, mixed> $data Result of BaseModel::getAllAsOptionsArray()
+ */
 
 use AM\Scheduler\Base\Helpers\StaticHelper;
 
-$label = !empty($data["label"]) ? $data["label"] : "";
-$name = !empty($data["name"]) ? $data["name"] : null;
-$id = !empty($data["id"]) ? $data["id"] : $name;
-$options = !empty($data["options"]) ? $data["options"] : [];
-$attributes = !empty($data["attributes"]) ? $data["attributes"] : null;
-$selected_option = !empty($data["value"]) ? $data["value"] : null;
-?>
-<?php if (!empty($name)): ?>
-    <div class="input-wrapper select__<?php echo "{$name}"; ?>">
-        <?php if (!empty($label)): ?>
-            <label for="<?php echo $id; ?>">
-                <?php _e($label, "ams"); ?>
+$label = $data["label"] ?? "";
+$name = $data["name"] ?? null;
+$id = $data["id"] ?? $name;
+$options = $data["options"] ?? [];
+$attributes = $data["attributes"] ?? "";
+$selected_option = $data["value"] ?? null;
+
+if ($name): ?>
+    <div class="input-wrapper select__<?php echo esc_attr($name); ?>">
+        <?php if ($label): ?>
+            <label for="<?php echo esc_attr($id); ?>">
+                <?php echo esc_html__($label, "ams"); ?>
             </label>
         <?php endif; ?>
-        <select id="<?php echo $id; ?>" name="<?php echo $name; ?>" <?php echo $attributes; ?>>
-            <?php if (!empty($options)): ?>
-                <option value="" <?php echo empty($selected_option)
-                    ? "selected"
-                    : ""; ?>>
-                    <?php _e("Select an option", "ams"); ?>
+
+        <select id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr(
+    $name
+); ?>" <?php echo $attributes; ?>>
+            <option value="" <?php selected(empty($selected_option)); ?>>
+                <?php esc_html_e("Select an option", "ams"); ?>
+            </option>
+
+            <?php foreach ($options as $option_value => $option_title): ?>
+                <option value="<?php echo esc_attr($option_value); ?>"
+                    <?php selected(
+                        StaticHelper::checkSelectedValue(
+                            $option_value,
+                            $selected_option
+                        )
+                    ); ?>>
+                    <?php echo esc_html($option_title); ?>
                 </option>
-                <?php foreach ($options as $option_value => $option_title): ?>
-                    <option value="<?php echo $option_value; ?>" <?php echo StaticHelper::checkSelectedValue(
-    $option_value,
-    $selected_option
-)
-    ? "selected"
-    : ""; ?>>
-                        <?php echo $option_title; ?>
-                    </option>
-            <?php endforeach;endif; ?>
+            <?php endforeach; ?>
         </select>
     </div>
-<?php endif;
+<?php endif; ?>

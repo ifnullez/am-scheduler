@@ -31,7 +31,9 @@ abstract class BaseModel implements BaseModelInterface
         );
         return $sql;
     }
-
+    /**
+     * @param array<int,mixed> $values
+     */
     public function batchFind(string $key, array $values): ?array
     {
         $string_of_values = implode(",", $values);
@@ -52,7 +54,10 @@ abstract class BaseModel implements BaseModelInterface
         );
         return !empty($result[0]) ? $result[0] : [];
     }
-
+    /**
+     * @param array<int,mixed> $fields_and_values
+     * @param mixed $compare_as
+     */
     public function multiParamsFind(
         array $fields_and_values,
         $compare_as = "<="
@@ -88,7 +93,9 @@ abstract class BaseModel implements BaseModelInterface
     {
         return get_object_vars($this);
     }
-
+    /**
+     * @param array<int,mixed> $array_to_save
+     */
     public function save(array $array_to_save): mixed
     {
         if (!empty($array_to_save)) {
@@ -113,7 +120,10 @@ abstract class BaseModel implements BaseModelInterface
         }
         return false;
     }
-
+    /**
+     * @param array<int,mixed> $data
+     * @param array<int,mixed> $where_values
+     */
     public function batchUpdate(
         array $data,
         string $where_key,
@@ -142,7 +152,9 @@ abstract class BaseModel implements BaseModelInterface
         }
         return false;
     }
-
+    /**
+     * @param array<int,mixed> $array_to_update
+     */
     public function update(array $array_to_update): mixed
     {
         $id = !empty($array_to_update["id"]) ? $array_to_update["id"] : null;
@@ -167,6 +179,9 @@ abstract class BaseModel implements BaseModelInterface
         }
         return false;
     }
+    /**
+     * @param array<int,mixed> $keys_and_values
+     */
     public function batchInsert(array $keys_and_values): ?bool
     {
         if (!empty($keys_and_values)) {
@@ -175,7 +190,9 @@ abstract class BaseModel implements BaseModelInterface
             );
         }
     }
-
+    /**
+     * @param array<int,mixed> $ids
+     */
     public function batchDelete(array $ids): ?bool
     {
         $ids = !empty($ids) ? implode(",", $ids) : null;

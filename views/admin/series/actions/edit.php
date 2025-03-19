@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * @var array<string, mixed> $data Result of BaseModel::getAllAsOptionsArray()
+ */
 use AM\Scheduler\Series\Controllers\SeriesController; ?>
 <div class="wrap mh-admin mh-admin__content mh-scheduler">
     <form class="mh-scheduler__form" method="POST" enctype="multipart/form-data" novalidate>

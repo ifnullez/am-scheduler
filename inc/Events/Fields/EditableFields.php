@@ -2,7 +2,6 @@
 
 namespace AM\Scheduler\Events\Fields;
 
-use AM\Scheduler\Base\Helpers\StaticHelper;
 use AM\Scheduler\Base\Traits\Singleton;
 use AM\Scheduler\Tasks\Models\TasksModel;
 
@@ -11,7 +10,9 @@ class EditableFields
     use Singleton;
 
     private static array $args = [];
-
+    /**
+     * @param array<int,mixed> $args
+     */
     public function __construct(array $args = [])
     {
         self::$args = $args;

@@ -1,6 +1,6 @@
 <?php
 
-namespace MHS\Entities\Abstractions;
+namespace AM\Scheduler\Entities\Abstractions;
 
 use wpdb;
 

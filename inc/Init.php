@@ -1,12 +1,12 @@
 <?php
 
-namespace MHS;
+namespace AM\Scheduler;
 
-use MHS\Base\Traits\Singleton;
-use MHS\AdminPages\AdminPagesLoader;
-use MHS\Api\ApiLoader;
-use MHS\Entities\EntitiesLoader;
-use MHS\Runner\SchedulerRunner;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\AdminPages\AdminPagesLoader;
+use AM\Scheduler\Api\ApiLoader;
+use AM\Scheduler\Entities\EntitiesLoader;
+use AM\Scheduler\Runner\SchedulerRunner;
 
 final class Init
 {
@@ -29,7 +29,7 @@ final class Init
         add_action("admin_enqueue_scripts", [$this, "admin_scripts"]);
     }
 
-    public function public_scripts()
+    public function public_scripts(): void
     {
         wp_enqueue_script(
             "mh-scheduler-public-script",
@@ -46,7 +46,7 @@ final class Init
         );
     }
 
-    public function admin_scripts()
+    public function admin_scripts(): void
     {
         wp_enqueue_script(
             "mh-scheduler-admin-script",

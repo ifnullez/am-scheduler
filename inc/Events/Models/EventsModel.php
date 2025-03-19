@@ -1,9 +1,9 @@
 <?php
-namespace MHS\Events\Models;
+namespace AM\Scheduler\Events\Models;
 
-use MHS\Base\Abstractions\BaseModel;
-use MHS\Base\Traits\Singleton;
-use MHS\Entities\Entity\EventsEntity;
+use AM\Scheduler\Base\Abstractions\BaseModel;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Entities\Entity\EventsEntity;
 
 class EventsModel extends BaseModel
 {

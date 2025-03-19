@@ -1,8 +1,8 @@
 <?php
 
-namespace MHS\Rrule\Enums;
+namespace AM\Scheduler\Rrule\Enums;
 
-use MHS\Base\Traits\EnumToArray;
+use AM\Scheduler\Base\Traits\EnumToArray;
 
 enum ByDayEnum
 {

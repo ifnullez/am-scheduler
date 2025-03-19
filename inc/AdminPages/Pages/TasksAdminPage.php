@@ -1,9 +1,9 @@
 <?php
-namespace MHS\AdminPages\Pages;
+namespace AM\Scheduler\AdminPages\Pages;
 
-use MHS\AdminPages\Abstractions\AbstractPage;
-use MHS\Base\Traits\Singleton;
-use MHS\Base\Views\ViewsController;
+use AM\Scheduler\AdminPages\Abstractions\AbstractPage;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Base\Views\ViewsController;
 
 class TasksAdminPage extends AbstractPage
 {
@@ -18,8 +18,8 @@ class TasksAdminPage extends AbstractPage
             "admin_menu",
             fn() => add_submenu_page(
                 $this->parent_slug,
-                __("Tasks", "mhs"),
-                __("Tasks", "mhs"),
+                __("Tasks", "ams"),
+                __("Tasks", "ams"),
                 "manage_options",
                 $this->slug,
                 [$this, "callback"],

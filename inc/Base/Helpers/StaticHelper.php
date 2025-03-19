@@ -1,9 +1,9 @@
 <?php
 
-namespace MHS\Base\Helpers;
+namespace AM\Scheduler\Base\Helpers;
 
 use Generator;
-use MHS\Base\Traits\Singleton;
+use AM\Scheduler\Base\Traits\Singleton;
 use Traversable;
 
 class StaticHelper
@@ -20,7 +20,7 @@ class StaticHelper
             implode(
                 $divider,
                 array_map(
-                    fn ($v, $k) => "`{$k}` {$compare_as} '{$v}' {$end}",
+                    fn($v, $k) => "`{$k}` {$compare_as} '{$v}' {$end}",
                     $data,
                     array_keys($data)
                 )
@@ -43,7 +43,7 @@ class StaticHelper
             implode(
                 $divider,
                 array_map(
-                    fn ($v) => "{$wrapper}{$v}{$wrapper}",
+                    fn($v) => "{$wrapper}{$v}{$wrapper}",
                     $data,
                     array_keys($data)
                 )
@@ -59,7 +59,7 @@ class StaticHelper
             implode(
                 " ",
                 array_map(
-                    fn ($v, $k) => "{$k}=\"{$v}\"",
+                    fn($v, $k) => "{$k}=\"{$v}\"",
                     $attributes_array,
                     array_keys($attributes_array)
                 )
@@ -119,8 +119,11 @@ class StaticHelper
         return false;
     }
 
-    public static function getFromArray(array $data, string $field, $use_id_as_key = true): ?array
-    {
+    public static function getFromArray(
+        array $data,
+        string $field,
+        $use_id_as_key = true
+    ): ?array {
         $new_data = [];
         if (!empty($data) && !empty($field)) {
             foreach ($data as $value) {
@@ -152,8 +155,9 @@ class StaticHelper
 
     public static function dayNumberFormat(int $number): ?string
     {
-
-        if ($number > 3 && $number < 21) return "{$number}th";
+        if ($number > 3 && $number < 21) {
+            return "{$number}th";
+        }
 
         switch ($number % 10) {
             case 1:

@@ -1,8 +1,8 @@
 <?php
 
-namespace MHS\ListTables;
+namespace AM\Scheduler\ListTables;
 
-use MHS\Events\Models\EventsModel;
+use AM\Scheduler\Events\Models\EventsModel;
 use WP_List_Table;
 
 class EventsListTable extends WP_List_Table
@@ -13,13 +13,13 @@ class EventsListTable extends WP_List_Table
     {
         $columns = [
             "cb" => '<input type="checkbox" />',
-            "id" => __("ID", "mhs"),
-            "title" => __("Title", "mhs"),
-            "description" => __("Description", "mhs"),
-            "task_id" => __("Task", "mhs"),
-            "created_at" => __("Created At", "mhs"),
-            // "starting_at" => __("Starting At", "mhs"),
-            // "next_series_at" => __("Next Series Date", "mhs"),
+            "id" => __("ID", "ams"),
+            "title" => __("Title", "ams"),
+            "description" => __("Description", "ams"),
+            "task_id" => __("Task", "ams"),
+            "created_at" => __("Created At", "ams"),
+            // "starting_at" => __("Starting At", "ams"),
+            // "next_series_at" => __("Next Series Date", "ams"),
         ];
         return $columns;
     }
@@ -143,7 +143,7 @@ class EventsListTable extends WP_List_Table
         $actions = [
             "edit" => sprintf(
                 '<a href="?page=%s&action=%s&element=%s">' .
-                    __("Edit", "mhs") .
+                    __("Edit", "ams") .
                     "</a>",
                 $_REQUEST["page"],
                 "edit",
@@ -151,7 +151,7 @@ class EventsListTable extends WP_List_Table
             ),
             "delete" => sprintf(
                 '<a href="?page=%s&action=%s&element=%s">' .
-                    __("Delete", "mhs") .
+                    __("Delete", "ams") .
                     "</a>",
                 $_REQUEST["page"],
                 "delete",
@@ -165,14 +165,14 @@ class EventsListTable extends WP_List_Table
     public function get_bulk_actions()
     {
         $actions = [
-            "delete" => __("Delete", "mhs"),
+            "delete" => __("Delete", "ams"),
         ];
         return $actions;
     }
 
     public function process_bulk_action()
     {
-        $ids = isset($_REQUEST['element']) ? $_REQUEST['element'] : [];
+        $ids = isset($_REQUEST["element"]) ? $_REQUEST["element"] : [];
         if (!empty($ids)) {
             switch ($this->current_action()) {
                 case "delete":

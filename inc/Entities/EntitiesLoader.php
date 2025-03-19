@@ -1,10 +1,10 @@
 <?php
 
-namespace MHS\Entities;
+namespace AM\Scheduler\Entities;
 
-use MHS\Base\Helpers\StaticHelper;
-use MHS\Base\Traits\Singleton;
-use MHS\Entities\Entity\{EventsEntity, SeriesEntity, TasksEntity};
+use AM\Scheduler\Base\Helpers\StaticHelper;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Entities\Entity\{EventsEntity, SeriesEntity, TasksEntity};
 
 class EntitiesLoader
 {
@@ -36,17 +36,28 @@ class EntitiesLoader
             foreach ($entities as $entity_for_alter) {
                 $schema = $entity_for_alter->updateSchema();
                 if (!empty($schema)) {
-                    foreach (StaticHelper::resolveEntitiesSchemas($schema) as $schema_request_key => $schema_request) {
+                    foreach (
+                        StaticHelper::resolveEntitiesSchemas($schema)
+                        as $schema_request_key => $schema_request
+                    ) {
                         // here we checking indexes because indexes don't have named keys, they always will be numeric
                         if (is_int($schema_request_key)) {
-                            if (!$entity_for_alter->isIndexesExists($entity_for_alter->indexes)) {
+                            if (
+                                !$entity_for_alter->isIndexesExists(
+                                    $entity_for_alter->indexes
+                                )
+                            ) {
                                 $entity_for_alter->wpdb->query($schema_request);
                             }
                         }
                         // here we checking constraints the keys in constraints array should be the same as constraint name
                         // this is needed to execute each constraint separately if it's not exist in database
                         if (is_string($schema_request_key)) {
-                            if (!$entity_for_alter->isConstraintExists($schema_request_key)) {
+                            if (
+                                !$entity_for_alter->isConstraintExists(
+                                    $schema_request_key
+                                )
+                            ) {
                                 $entity_for_alter->wpdb->query($schema_request);
                             }
                         }

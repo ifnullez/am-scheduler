@@ -1,4 +1,4 @@
 <?php
-use MHS\Series\Controllers\SeriesController;
+use AM\Scheduler\Series\Controllers\SeriesController;
 
 SeriesController::getInstance()->conditionalDisplay();

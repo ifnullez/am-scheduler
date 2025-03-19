@@ -1,6 +1,6 @@
 <?php
 
-namespace MHS\Runner\Traits;
+namespace AM\Scheduler\Runner\Traits;
 
 trait SchedulerRunnerTrait
 {

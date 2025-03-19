@@ -1,9 +1,9 @@
 <?php
 
-namespace MHS\Entities\Traits;
+namespace AM\Scheduler\Entities\Traits;
 
 use Exception;
-use MHS\Base\Traits\Singleton;
+use AM\Scheduler\Base\Traits\Singleton;
 
 trait EntityTrait
 {

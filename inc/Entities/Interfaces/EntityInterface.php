@@ -1,5 +1,5 @@
 <?php
-namespace MHS\Entities\Interfaces;
+namespace AM\Scheduler\Entities\Interfaces;
 
 interface EntityInterface
 {

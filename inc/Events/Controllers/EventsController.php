@@ -1,19 +1,19 @@
 <?php
 
-namespace MHS\Events\Controllers;
+namespace AM\Scheduler\Events\Controllers;
 
-use MHS\AdminPages\Pages\EventsAdminPage;
-use MHS\Base\Abstractions\AbstractItemController;
-use MHS\Base\Traits\Singleton;
-use MHS\Base\Views\ViewsController;
-use MHS\Entities\Entity\EventsEntity;
-use MHS\Events\Models\EventsModel;
-use MHS\ListTables\EventsListTable;
-use MHS\Events\Event;
-use MHS\Events\Fields\{EditableFields, SidebarFields};
-use MHS\Rrule\Controllers\RruleOccurences;
-use MHS\Series\Models\SeriesModel;
-use MHS\Tasks\Models\TasksModel;
+use AM\Scheduler\AdminPages\Pages\EventsAdminPage;
+use AM\Scheduler\Base\Abstractions\AbstractItemController;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Base\Views\ViewsController;
+use AM\Scheduler\Entities\Entity\EventsEntity;
+use AM\Scheduler\Events\Models\EventsModel;
+use AM\Scheduler\ListTables\EventsListTable;
+use AM\Scheduler\Events\Event;
+use AM\Scheduler\Events\Fields\{EditableFields, SidebarFields};
+use AM\Scheduler\Rrule\Controllers\RruleOccurences;
+use AM\Scheduler\Series\Models\SeriesModel;
+use AM\Scheduler\Tasks\Models\TasksModel;
 
 class EventsController extends AbstractItemController
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace MHS\Series;
+namespace AM\Scheduler\Series;
 
-use MHS\Base\Abstractions\BaseObject;
-use MHS\Series\Models\SeriesModel;
-use MHS\Series\Interfaces\SeriesInterface;
+use AM\Scheduler\Base\Abstractions\BaseObject;
+use AM\Scheduler\Series\Models\SeriesModel;
+use AM\Scheduler\Series\Interfaces\SeriesInterface;
 
 class Series extends BaseObject implements SeriesInterface
 {

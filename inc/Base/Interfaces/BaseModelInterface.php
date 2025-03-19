@@ -1,6 +1,6 @@
 <?php
 
-namespace MHS\Base\Interfaces;
+namespace AM\Scheduler\Base\Interfaces;
 
 interface BaseModelInterface
 {

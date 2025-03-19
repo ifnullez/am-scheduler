@@ -1,6 +1,6 @@
 <?php
 
-namespace MHS\Runner\Interfaces;
+namespace AM\Scheduler\Runner\Interfaces;
 
 interface RunnerActionInterface
 {

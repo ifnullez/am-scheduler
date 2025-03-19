@@ -1,10 +1,10 @@
 <?php
 
-namespace MHS\Api\V1;
+namespace AM\Scheduler\Api\V1;
 
-use MHS\Api\ApiLoader;
-use MHS\Api\V1\Endpoints\{SeriesEndpoint};
-use MHS\Base\Traits\Singleton;
+use AM\Scheduler\Api\ApiLoader;
+use AM\Scheduler\Api\V1\Endpoints\{SeriesEndpoint};
+use AM\Scheduler\Base\Traits\Singleton;
 
 class Api extends ApiLoader
 {
@@ -14,8 +14,6 @@ class Api extends ApiLoader
 
     private function __construct()
     {
-        $this->endpoints = [
-            SeriesEndpoint::getInstance()
-        ];
+        $this->endpoints = [SeriesEndpoint::getInstance()];
     }
 }

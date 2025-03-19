@@ -1,6 +1,6 @@
 <?php
 
-namespace MHS\Events\Interfaces;
+namespace AM\Scheduler\Events\Interfaces;
 
 interface FieldsInterface
 {

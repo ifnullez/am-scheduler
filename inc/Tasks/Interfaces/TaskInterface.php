@@ -1,6 +1,6 @@
 <?php
 
-namespace MHS\Tasks\Interfaces;
+namespace AM\Scheduler\Tasks\Interfaces;
 
 interface TaskInterface
 {

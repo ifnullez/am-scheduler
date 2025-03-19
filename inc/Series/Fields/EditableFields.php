@@ -1,11 +1,11 @@
 <?php
 
-namespace MHS\Series\Fields;
+namespace AM\Scheduler\Series\Fields;
 
-use MHS\Base\Helpers\StaticHelper;
-use MHS\Base\Traits\Singleton;
-use MHS\Events\Models\EventsModel;
-use MHS\Rrule\Enums\ActionsEnum;
+use AM\Scheduler\Base\Helpers\StaticHelper;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Events\Models\EventsModel;
+use AM\Scheduler\Rrule\Enums\ActionsEnum;
 
 class EditableFields
 {
@@ -28,7 +28,10 @@ class EditableFields
             "event_id" => [
                 "type" => "select",
                 "label" => "Event",
-                "options" => StaticHelper::getFromArray(EventsModel::getInstance()->getAll(), "title"),
+                "options" => StaticHelper::getFromArray(
+                    EventsModel::getInstance()->getAll(),
+                    "title"
+                ),
             ],
             "id" => [
                 "type" => "hidden",

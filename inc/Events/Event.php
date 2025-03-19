@@ -1,10 +1,10 @@
 <?php
 
-namespace MHS\Events;
+namespace AM\Scheduler\Events;
 
-use MHS\Base\Abstractions\BaseObject;
-use MHS\Events\Interfaces\EventInterface;
-use MHS\Events\Models\EventsModel;
+use AM\Scheduler\Base\Abstractions\BaseObject;
+use AM\Scheduler\Events\Interfaces\EventInterface;
+use AM\Scheduler\Events\Models\EventsModel;
 
 class Event extends BaseObject implements EventInterface
 {

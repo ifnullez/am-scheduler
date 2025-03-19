@@ -1,8 +1,8 @@
 <?php
-namespace MHS\Runner;
+namespace AM\Scheduler\Runner;
 
-use MHS\Base\Traits\Singleton;
-use MHS\Runner\Actions\{RunnerCheckGroupAmountAction};
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Runner\Actions\{RunnerCheckGroupAmountAction};
 
 class RunnerActionsLoader
 {
@@ -12,9 +12,7 @@ class RunnerActionsLoader
 
     private function __construct()
     {
-        $this->actions = [
-            RunnerCheckGroupAmountAction::getInstance()
-        ];
+        $this->actions = [RunnerCheckGroupAmountAction::getInstance()];
     }
 
     public function __get(string $property): mixed

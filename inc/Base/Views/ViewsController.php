@@ -1,7 +1,7 @@
 <?php
-namespace MHS\Base\Views;
+namespace AM\Scheduler\Base\Views;
 
-use MHS\Base\Traits\Singleton;
+use AM\Scheduler\Base\Traits\Singleton;
 
 class ViewsController
 {

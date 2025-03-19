@@ -1,8 +1,8 @@
 <?php
 
-namespace MHS\ListTables;
+namespace AM\Scheduler\ListTables;
 
-use MHS\Tasks\Models\TasksModel;
+use AM\Scheduler\Tasks\Models\TasksModel;
 use WP_List_Table;
 
 class TasksListTable extends WP_List_Table
@@ -13,15 +13,15 @@ class TasksListTable extends WP_List_Table
     {
         $columns = [
             "cb" => '<input type="checkbox" />',
-            "id" => __("ID", "mhs"),
-            "title" => __("Title", "mhs"),
-            "description" => __("Description", "mhs"),
-            "action" => __("Action", "mhs"),
-            "author_id" => __("Author ID", "mhs"),
-            "group_id" => __("Group ID", "mhs"),
-            "members_ids" => __("Member ID", "mhs"),
-            "created_at" => __("Created At", "mhs"),
-            "updated_at" => __("Updated At", "mhs"),
+            "id" => __("ID", "ams"),
+            "title" => __("Title", "ams"),
+            "description" => __("Description", "ams"),
+            "action" => __("Action", "ams"),
+            "author_id" => __("Author ID", "ams"),
+            "group_id" => __("Group ID", "ams"),
+            "members_ids" => __("Member ID", "ams"),
+            "created_at" => __("Created At", "ams"),
+            "updated_at" => __("Updated At", "ams"),
         ];
         return $columns;
     }
@@ -158,7 +158,7 @@ class TasksListTable extends WP_List_Table
         $actions = [
             "edit" => sprintf(
                 '<a href="?page=%s&action=%s&element=%s">' .
-                    __("Edit", "mhs") .
+                    __("Edit", "ams") .
                     "</a>",
                 $_REQUEST["page"],
                 "edit",
@@ -166,7 +166,7 @@ class TasksListTable extends WP_List_Table
             ),
             "delete" => sprintf(
                 '<a href="?page=%s&action=%s&element=%s">' .
-                    __("Delete", "mhs") .
+                    __("Delete", "ams") .
                     "</a>",
                 $_REQUEST["page"],
                 "delete",
@@ -180,14 +180,14 @@ class TasksListTable extends WP_List_Table
     public function get_bulk_actions()
     {
         $actions = [
-            "delete" => __("Delete", "mhs"),
+            "delete" => __("Delete", "ams"),
         ];
         return $actions;
     }
 
     public function process_bulk_action()
     {
-        $ids = isset($_REQUEST['element']) ? $_REQUEST['element'] : [];
+        $ids = isset($_REQUEST["element"]) ? $_REQUEST["element"] : [];
         if (!empty($ids)) {
             switch ($this->current_action()) {
                 case "delete":

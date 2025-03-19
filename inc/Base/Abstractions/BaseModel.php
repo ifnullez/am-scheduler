@@ -1,9 +1,9 @@
 <?php
 
-namespace MHS\Base\Abstractions;
+namespace AM\Scheduler\Base\Abstractions;
 
-use MHS\Base\Helpers\StaticHelper;
-use MHS\Base\Interfaces\BaseModelInterface;
+use AM\Scheduler\Base\Helpers\StaticHelper;
+use AM\Scheduler\Base\Interfaces\BaseModelInterface;
 use wpdb;
 
 abstract class BaseModel implements BaseModelInterface

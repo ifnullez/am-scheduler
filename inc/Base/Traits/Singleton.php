@@ -1,6 +1,6 @@
 <?php
 
-namespace MHS\Base\Traits;
+namespace AM\Scheduler\Base\Traits;
 
 trait Singleton
 {
@@ -14,13 +14,9 @@ trait Singleton
         return self::$instance;
     }
 
-    private function __construct()
-    {
-    }
+    private function __construct() {}
 
-    private function __clone()
-    {
-    }
+    private function __clone() {}
 
     public function __wakeup()
     {

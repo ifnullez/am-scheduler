@@ -1,6 +1,6 @@
 <?php
 
-namespace MHS\Api\V1\Interfaces;
+namespace AM\Scheduler\Api\V1\Interfaces;
 
 interface ApiActionEndpointInterface
 {

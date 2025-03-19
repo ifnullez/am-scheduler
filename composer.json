@@ -1,12 +1,12 @@
 {
-  "name": "mh/scheduler",
+  "name": "am/scheduler",
   "version": "0.0.1",
-  "description": "scheduler plugion for mustardhub",
+  "description": "Scheduler plugion",
   "type": "wordpress-plugin",
   "license": "GPL-3.0-or-later",
   "autoload": {
     "psr-4": {
-      "MHS\\": "inc/"
+      "AM\\Scheduler\\": "inc/"
     }
   },
   "require-dev": {

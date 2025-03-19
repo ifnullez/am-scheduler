@@ -1,10 +1,10 @@
 <?php
 
-namespace MHS\Events\Fields;
+namespace AM\Scheduler\Events\Fields;
 
-use MHS\Base\Helpers\StaticHelper;
-use MHS\Base\Traits\Singleton;
-use MHS\Tasks\Models\TasksModel;
+use AM\Scheduler\Base\Helpers\StaticHelper;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Tasks\Models\TasksModel;
 
 class EditableFields
 {
@@ -28,8 +28,8 @@ class EditableFields
                 "type" => "textarea",
                 "label" => "Description",
                 "attributes" => [
-                    "rows" => 12
-                ]
+                    "rows" => 12,
+                ],
             ],
             "task_id" => [
                 "type" => "select",

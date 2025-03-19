@@ -1,6 +1,6 @@
 <?php
 
-namespace MHS\Base\Traits;
+namespace AM\Scheduler\Base\Traits;
 
 trait EnumToArray
 {

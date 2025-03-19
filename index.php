@@ -16,7 +16,7 @@
 
 require_once "vendor/autoload.php";
 
-use MHS\Init;
+use AM\Scheduler\Init;
 
 // Define base constants
 if (!defined("MHS_PLUGIN_VERSION")) {

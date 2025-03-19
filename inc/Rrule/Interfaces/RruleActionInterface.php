@@ -1,6 +1,6 @@
 <?php
 
-namespace MHS\Rrule\Interfaces;
+namespace AM\Scheduler\Rrule\Interfaces;
 
 interface RruleActionInterface
 {

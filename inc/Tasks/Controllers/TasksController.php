@@ -1,19 +1,19 @@
 <?php
 
-namespace MHS\Tasks\Controllers;
+namespace AM\Scheduler\Tasks\Controllers;
 
-use MHS\AdminPages\Pages\TasksAdminPage;
-use MHS\Base\Abstractions\AbstractItemController;
-use MHS\Base\Helpers\StaticHelper;
-use MHS\Base\Traits\Singleton;
-use MHS\Base\Views\ViewsController;
-use MHS\Entities\Entity\TasksEntity;
-use MHS\Events\Models\EventsModel;
-use MHS\Tasks\Models\TasksModel;
-use MHS\ListTables\TasksListTable;
-use MHS\Series\Controllers\SeriesController;
-use MHS\Tasks\Fields\{EditableFields, SidebarFields};
-use MHS\Tasks\Task;
+use AM\Scheduler\AdminPages\Pages\TasksAdminPage;
+use AM\Scheduler\Base\Abstractions\AbstractItemController;
+use AM\Scheduler\Base\Helpers\StaticHelper;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Base\Views\ViewsController;
+use AM\Scheduler\Entities\Entity\TasksEntity;
+use AM\Scheduler\Events\Models\EventsModel;
+use AM\Scheduler\Tasks\Models\TasksModel;
+use AM\Scheduler\ListTables\TasksListTable;
+use AM\Scheduler\Series\Controllers\SeriesController;
+use AM\Scheduler\Tasks\Fields\{EditableFields, SidebarFields};
+use AM\Scheduler\Tasks\Task;
 
 class TasksController extends AbstractItemController
 {
@@ -102,17 +102,16 @@ class TasksController extends AbstractItemController
             );
             if (empty($data["id"])) {
                 // save data
-                $task_id = TasksModel::getInstance()->save($data_for_save_update);
+                $task_id = TasksModel::getInstance()->save(
+                    $data_for_save_update
+                );
             } else {
                 TasksModel::getInstance()->update($data_for_save_update);
                 $related_event = EventsModel::getInstance()->findBy(
                     "task_id",
                     $data_for_save_update["id"]
                 );
-                $task_events = StaticHelper::getFromArray(
-                    $related_event,
-                    "id"
-                );
+                $task_events = StaticHelper::getFromArray($related_event, "id");
                 $for_series_update = [];
                 $include_fields = [
                     "members_ids",
@@ -120,10 +119,13 @@ class TasksController extends AbstractItemController
                     "amount",
                     "action",
                     "reason",
-                    "message"
+                    "message",
                 ];
                 if (!empty($data_for_save_update)) {
-                    foreach ($data_for_save_update as $for_save_key => $for_save_value) {
+                    foreach (
+                        $data_for_save_update
+                        as $for_save_key => $for_save_value
+                    ) {
                         if (in_array($for_save_key, $include_fields)) {
                             $for_series_update[$for_save_key] = $for_save_value;
                         }

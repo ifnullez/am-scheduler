@@ -1,9 +1,9 @@
 <?php
 
-namespace MHS\Events\Fields;
+namespace AM\Scheduler\Events\Fields;
 
-use MHS\Base\Traits\Singleton;
-use MHS\Rrule\Enums\{ByDayEnum, StartDayEnum};
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Rrule\Enums\{ByDayEnum, StartDayEnum};
 
 class SidebarFields
 {

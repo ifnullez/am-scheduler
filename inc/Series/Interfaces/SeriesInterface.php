@@ -1,6 +1,6 @@
 <?php
 
-namespace MHS\Series\Interfaces;
+namespace AM\Scheduler\Series\Interfaces;
 
 interface SeriesInterface
 {

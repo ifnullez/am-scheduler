@@ -1,9 +1,9 @@
 <?php
-namespace MHS\Members\Models;
+namespace AM\Scheduler\Members\Models;
 
-use MHS\Base\Abstractions\BaseModel;
-use MHS\Base\Traits\Singleton;
-use MHS\Entities\Entity\MembersEntity;
+use AM\Scheduler\Base\Abstractions\BaseModel;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Entities\Entity\MembersEntity;
 
 class MembersModel extends BaseModel
 {

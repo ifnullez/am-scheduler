@@ -1,10 +1,10 @@
 <?php
 
-namespace MHS\Rrule\Controllers;
+namespace AM\Scheduler\Rrule\Controllers;
 
 use DateTime;
 use DateTimeZone;
-use MHS\Rrule\Enums\RruleParamsEnum;
+use AM\Scheduler\Rrule\Enums\RruleParamsEnum;
 
 class RruleStringGenerator
 {

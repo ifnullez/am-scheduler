@@ -1,18 +1,18 @@
 <?php
-namespace MHS\Rrule\Actions;
+namespace AM\Scheduler\Rrule\Actions;
 
 use Members;
-use MHS\Base\Enums\EventsSeriesStatuses;
-use MHS\Base\Helpers\StaticHelper;
-use MHS\Base\Traits\Singleton;
-use MHS\Groups\Controllers\GroupsController;
-use MHS\Integrations\MakeCom\MakeComCli;
-use MHS\Rrule\Abstractions\RruleActionAbstraction;
-use MHS\Rrule\Controllers\RruleStringGenerator;
-use MHS\Rrule\Enums\ActionsEnum;
-use MHS\Rrule\Interfaces\RruleActionInterface;
-use MHS\Series\Controllers\SeriesController;
-use MHS\Tasks\Task;
+use AM\Scheduler\Base\Enums\EventsSeriesStatuses;
+use AM\Scheduler\Base\Helpers\StaticHelper;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Groups\Controllers\GroupsController;
+use AM\Scheduler\Integrations\MakeCom\MakeComCli;
+use AM\Scheduler\Rrule\Abstractions\RruleActionAbstraction;
+use AM\Scheduler\Rrule\Controllers\RruleStringGenerator;
+use AM\Scheduler\Rrule\Enums\ActionsEnum;
+use AM\Scheduler\Rrule\Interfaces\RruleActionInterface;
+use AM\Scheduler\Series\Controllers\SeriesController;
+use AM\Scheduler\Tasks\Task;
 
 class RruleSendPointsMembersAction extends RruleActionAbstraction implements
     RruleActionInterface
@@ -42,16 +42,24 @@ class RruleSendPointsMembersAction extends RruleActionAbstraction implements
             $amount = !empty($series["amount"]) ? $series["amount"] : null;
             $action = !empty($series["action"]) ? $series["action"] : null;
 
-            if(!empty($for_members) && !empty($from_group["ID"]) && !empty($amount) && !empty($action)){
+            if (
+                !empty($for_members) &&
+                !empty($from_group["ID"]) &&
+                !empty($amount) &&
+                !empty($action)
+            ) {
                 unset($series["execution_status"]);
                 // for series update
                 $array_for_update = [
                     "executed_at" => (new RruleStringGenerator())->createValidDate(),
-                    "execution_status" => EventsSeriesStatuses::FAILED->value
+                    "execution_status" => EventsSeriesStatuses::FAILED->value,
                 ];
 
-                $series_for_log = StaticHelper::createRequestString(", \r", $series, "=>");
-
+                $series_for_log = StaticHelper::createRequestString(
+                    ", \r",
+                    $series,
+                    "=>"
+                );
 
                 $isEnoughPoints = GroupsController::isEnoughAmountForTransaction(
                     owner_id: $from_group["ID"],
@@ -59,23 +67,35 @@ class RruleSendPointsMembersAction extends RruleActionAbstraction implements
                     members_count: count($for_members ?? [])
                 );
 
-                if($isEnoughPoints){
-
+                if ($isEnoughPoints) {
                     // send points
                     $executed = false;
-                    foreach($for_members as $member_id){
-
-                    $group_id = !empty($series["group_id"]) ? $series["group_id"] : 0;
-                        $executed = Members::transferPointsFromGroupToMember($member_id, $amount, $group_id, 0, (new Task($series["task_id"]))->description ?? "", "");
+                    foreach ($for_members as $member_id) {
+                        $group_id = !empty($series["group_id"])
+                            ? $series["group_id"]
+                            : 0;
+                        $executed = Members::transferPointsFromGroupToMember(
+                            $member_id,
+                            $amount,
+                            $group_id,
+                            0,
+                            (new Task($series["task_id"]))->description ?? "",
+                            ""
+                        );
                     }
-                    if($executed){
+                    if ($executed) {
                         // for series update
                         $array_for_update = [
                             "executed_at" => (new RruleStringGenerator())->createValidDate(),
-                            "execution_status" => EventsSeriesStatuses::DONE->value
+                            "execution_status" =>
+                                EventsSeriesStatuses::DONE->value,
                         ];
 
-                        $series_for_log = StaticHelper::createRequestString(", \r", $series, "=>");
+                        $series_for_log = StaticHelper::createRequestString(
+                            ", \r",
+                            $series,
+                            "=>"
+                        );
                         $body_for_log = [
                             "message" => print_r(
                                 "\r Scheduler: \r Series Executed Successfully! \r {$series_for_log} \r",
@@ -83,7 +103,7 @@ class RruleSendPointsMembersAction extends RruleActionAbstraction implements
                             ),
                         ];
                     }
-                } else if(!empty($from_group["ID"])) {
+                } elseif (!empty($from_group["ID"])) {
                     // insufficient amount
                     $body_for_log = [
                         "message" => print_r(
@@ -101,10 +121,17 @@ class RruleSendPointsMembersAction extends RruleActionAbstraction implements
                     ];
                 }
                 // update series
-                SeriesController::getInstance()->updateData($array_for_update, [$series["id"]], "id");
+                SeriesController::getInstance()->updateData(
+                    $array_for_update,
+                    [$series["id"]],
+                    "id"
+                );
 
-                if(!empty($body_for_log)){
-                    $mk = new MakeComCli("https://hook.us1.make.com/ue8a3zi1zuo280vr461yn2fcj6ocrhe7", $body_for_log);
+                if (!empty($body_for_log)) {
+                    $mk = new MakeComCli(
+                        "https://hook.us1.make.com/ue8a3zi1zuo280vr461yn2fcj6ocrhe7",
+                        $body_for_log
+                    );
                     $mk->sendRequest();
                 }
             }

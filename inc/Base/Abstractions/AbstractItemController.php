@@ -1,11 +1,11 @@
 <?php
 
-namespace MHS\Base\Abstractions;
+namespace AM\Scheduler\Base\Abstractions;
 
 use DateTime;
-use MHS\Base\Helpers\StaticHelper;
-use MHS\Base\Interfaces\ItemControllerInterface;
-use MHS\Base\Views\ViewsController;
+use AM\Scheduler\Base\Helpers\StaticHelper;
+use AM\Scheduler\Base\Interfaces\ItemControllerInterface;
+use AM\Scheduler\Base\Views\ViewsController;
 
 abstract class AbstractItemController implements ItemControllerInterface
 {
@@ -27,7 +27,6 @@ abstract class AbstractItemController implements ItemControllerInterface
     public array $select_types = ["select"];
     public array $textarea = ["textarea"];
     public array $json_fields = ["meta", "members_ids"];
-
 
     public function conditionalDisplay(array $request = []): void
     {
@@ -113,7 +112,7 @@ abstract class AbstractItemController implements ItemControllerInterface
                         [
                             "name" => $field_slug,
                             "id" =>
-                            $field_value["id"] ??
+                                $field_value["id"] ??
                                 $field_slug . "_" . uniqid(),
                             "type" => $field_value["type"] ?? "text",
                             "label" => $field_value["label"] ?? null,
@@ -140,7 +139,7 @@ abstract class AbstractItemController implements ItemControllerInterface
                         [
                             "name" => $field_slug,
                             "id" =>
-                            $field_value["id"] ??
+                                $field_value["id"] ??
                                 $field_slug . "_" . uniqid(),
                             "label" => $field_value["label"] ?? null,
                             "options" => $field_value["options"] ?? [],
@@ -159,7 +158,7 @@ abstract class AbstractItemController implements ItemControllerInterface
                         [
                             "name" => $field_slug,
                             "id" =>
-                            $field_value["id"] ??
+                                $field_value["id"] ??
                                 $field_slug . "_" . uniqid(),
                             "label" => $field_value["label"] ?? null,
                             "value" => $value,

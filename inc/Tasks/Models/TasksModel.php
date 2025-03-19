@@ -1,9 +1,9 @@
 <?php
-namespace MHS\Tasks\Models;
+namespace AM\Scheduler\Tasks\Models;
 
-use MHS\Base\Abstractions\BaseModel;
-use MHS\Base\Traits\Singleton;
-use MHS\Entities\Entity\TasksEntity;
+use AM\Scheduler\Base\Abstractions\BaseModel;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Entities\Entity\TasksEntity;
 
 class TasksModel extends BaseModel
 {

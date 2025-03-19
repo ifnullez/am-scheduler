@@ -1,11 +1,11 @@
 <?php
-namespace MHS\Series\Models;
+namespace AM\Scheduler\Series\Models;
 
-use MHS\Base\Abstractions\BaseModel;
-use MHS\Base\Enums\EventsSeriesStatuses;
-use MHS\Base\Traits\Singleton;
-use MHS\Entities\Entity\SeriesEntity;
-use MHS\Rrule\Controllers\RruleStringGenerator;
+use AM\Scheduler\Base\Abstractions\BaseModel;
+use AM\Scheduler\Base\Enums\EventsSeriesStatuses;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Entities\Entity\SeriesEntity;
+use AM\Scheduler\Rrule\Controllers\RruleStringGenerator;
 
 class SeriesModel extends BaseModel
 {
@@ -19,7 +19,6 @@ class SeriesModel extends BaseModel
 
     public function getForExecute(string $modify = "+0 days"): ?array
     {
-
         $new = EventsSeriesStatuses::NEW->value;
         $failed = EventsSeriesStatuses::FAILED->value;
 

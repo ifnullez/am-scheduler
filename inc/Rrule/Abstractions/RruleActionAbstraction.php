@@ -1,6 +1,6 @@
 <?php
 
-namespace MHS\Rrule\Abstractions;
+namespace AM\Scheduler\Rrule\Abstractions;
 
 abstract class RruleActionAbstraction
 {

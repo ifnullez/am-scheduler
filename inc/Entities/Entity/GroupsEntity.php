@@ -1,10 +1,10 @@
 <?php
 
-namespace MHS\Entities\Entity;
+namespace AM\Scheduler\Entities\Entity;
 
-use MHS\Entities\Abstractions\AbstractEntity;
-use MHS\Entities\Interfaces\EntityInterface;
-use MHS\Entities\Traits\EntityTrait;
+use AM\Scheduler\Entities\Abstractions\AbstractEntity;
+use AM\Scheduler\Entities\Interfaces\EntityInterface;
+use AM\Scheduler\Entities\Traits\EntityTrait;
 
 class GroupsEntity extends AbstractEntity implements EntityInterface
 {

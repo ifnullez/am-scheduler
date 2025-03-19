@@ -1,19 +1,19 @@
 <?php
 
-namespace MHS\Series\Controllers;
+namespace AM\Scheduler\Series\Controllers;
 
-use MHS\AdminPages\Pages\SeriesAdminPage;
-use MHS\Base\Abstractions\AbstractItemController;
-use MHS\Base\Traits\Singleton;
-use MHS\Base\Views\ViewsController;
-use MHS\Entities\Entity\SeriesEntity;
-use MHS\Events\Event;
-use MHS\Events\Models\EventsModel;
-use MHS\Series\Models\SeriesModel;
-use MHS\ListTables\SeriesListTable;
-use MHS\Series\Fields\{EditableFields, SidebarFields};
-use MHS\Series\Series;
-use MHS\Tasks\Models\TasksModel;
+use AM\Scheduler\AdminPages\Pages\SeriesAdminPage;
+use AM\Scheduler\Base\Abstractions\AbstractItemController;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Base\Views\ViewsController;
+use AM\Scheduler\Entities\Entity\SeriesEntity;
+use AM\Scheduler\Events\Event;
+use AM\Scheduler\Events\Models\EventsModel;
+use AM\Scheduler\Series\Models\SeriesModel;
+use AM\Scheduler\ListTables\SeriesListTable;
+use AM\Scheduler\Series\Fields\{EditableFields, SidebarFields};
+use AM\Scheduler\Series\Series;
+use AM\Scheduler\Tasks\Models\TasksModel;
 use WP_REST_Request;
 
 class SeriesController extends AbstractItemController
@@ -40,9 +40,7 @@ class SeriesController extends AbstractItemController
         $this->onSave();
     }
 
-    public function editableFields(): void
-    {
-    }
+    public function editableFields(): void {}
 
     public function list(): void
     {
@@ -97,7 +95,9 @@ class SeriesController extends AbstractItemController
             );
             if (empty($data["id"])) {
                 // save data
-                $new_id = SeriesModel::getInstance()->save($data_for_save_update);
+                $new_id = SeriesModel::getInstance()->save(
+                    $data_for_save_update
+                );
             } else {
                 SeriesModel::getInstance()->update($data_for_save_update);
             }
@@ -125,7 +125,9 @@ class SeriesController extends AbstractItemController
 
     public function bulkActions(WP_REST_Request $request): void
     {
-        $rst = !empty($request->get_body_params()["selected"]) ? json_decode($request->get_body_params()["selected"]) : null;
+        $rst = !empty($request->get_body_params()["selected"])
+            ? json_decode($request->get_body_params()["selected"])
+            : null;
 
         switch ($rst->selected_action) {
             case "remove_selected_series":
@@ -134,7 +136,7 @@ class SeriesController extends AbstractItemController
             default:
                 wp_send_json([
                     "message" => "Nothing Selected!",
-                    "request_data" => $rst
+                    "request_data" => $rst,
                 ]);
                 break;
         }
@@ -152,7 +154,9 @@ class SeriesController extends AbstractItemController
                 $tasks_ids[] = $series_item_data->task_id;
             }
 
-            $batchDelete = !empty($series_items_ids) ? SeriesModel::getInstance()->batchDelete($series_items_ids) : false;
+            $batchDelete = !empty($series_items_ids)
+                ? SeriesModel::getInstance()->batchDelete($series_items_ids)
+                : false;
 
             $events_to_delete = [];
             $tasks_to_delete = [];
@@ -169,26 +173,29 @@ class SeriesController extends AbstractItemController
                         $tasks_to_delete[] = $event->task_id;
                     }
                 }
-                $batch_delete_events = !empty($events_to_delete) ? EventsModel::getInstance()->batchDelete($events_to_delete) : false;
-                $batch_delete_tasks = !empty($tasks_to_delete) ? TasksModel::getInstance()->batchDelete($tasks_to_delete) : false;
+                $batch_delete_events = !empty($events_to_delete)
+                    ? EventsModel::getInstance()->batchDelete($events_to_delete)
+                    : false;
+                $batch_delete_tasks = !empty($tasks_to_delete)
+                    ? TasksModel::getInstance()->batchDelete($tasks_to_delete)
+                    : false;
             }
-
 
             if ($batchDelete) {
                 wp_send_json_success([
                     "message" => "Successfully Deleted!",
-                    "request_data" => $data
+                    "request_data" => $data,
                 ]);
             } else {
                 wp_send_json_error([
                     "message" => "Something went wrong!",
-                    "request_data" => $data
+                    "request_data" => $data,
                 ]);
             }
         }
         wp_send_json([
             "message" => "Nothing Selected!",
-            "request_data" => $data
+            "request_data" => $data,
         ]);
     }
 }

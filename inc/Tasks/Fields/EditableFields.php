@@ -1,9 +1,9 @@
 <?php
 
-namespace MHS\Tasks\Fields;
+namespace AM\Scheduler\Tasks\Fields;
 
-use MHS\Base\Traits\Singleton;
-use MHS\Rrule\Enums\ActionsEnum;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Rrule\Enums\ActionsEnum;
 
 class EditableFields
 {
@@ -27,8 +27,8 @@ class EditableFields
                 "type" => "textarea",
                 "label" => "Description",
                 "attributes" => [
-                    "rows" => 12
-                ]
+                    "rows" => 12,
+                ],
             ],
             "author_id" => [
                 "type" => "hidden",

@@ -1,6 +1,6 @@
 <?php
 
-namespace MHS\Runner\Abstractions;
+namespace AM\Scheduler\Runner\Abstractions;
 
 abstract class RunnerActionAbstraction
 {

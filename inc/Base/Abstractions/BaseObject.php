@@ -1,5 +1,5 @@
 <?php
-namespace MHS\Base\Abstractions;
+namespace AM\Scheduler\Base\Abstractions;
 
 abstract class BaseObject
 {

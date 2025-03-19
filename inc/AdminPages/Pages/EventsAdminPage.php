@@ -1,9 +1,9 @@
 <?php
-namespace MHS\AdminPages\Pages;
+namespace AM\Scheduler\AdminPages\Pages;
 
-use MHS\AdminPages\Abstractions\AbstractPage;
-use MHS\Base\Traits\Singleton;
-use MHS\Base\Views\ViewsController;
+use AM\Scheduler\AdminPages\Abstractions\AbstractPage;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Base\Views\ViewsController;
 
 class EventsAdminPage extends AbstractPage
 {
@@ -16,8 +16,8 @@ class EventsAdminPage extends AbstractPage
         add_action(
             "admin_menu",
             fn() => add_menu_page(
-                __("Events", "mhs"),
-                __("Scheduler", "mhs"),
+                __("Events", "ams"),
+                __("Events", "ams"),
                 "manage_options",
                 $this->slug,
                 [$this, "callback"],

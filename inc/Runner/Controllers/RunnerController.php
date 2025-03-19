@@ -1,12 +1,11 @@
 <?php
 
-namespace MHS\Runner\Controllers;
+namespace AM\Scheduler\Runner\Controllers;
 
-use MHS\Series\Models\SeriesModel;
+use AM\Scheduler\Series\Models\SeriesModel;
 
 class RunnerController
 {
-
     public function getSeriesForCurrentDateTime(
         string $modify = "+0 days"
     ): ?array {

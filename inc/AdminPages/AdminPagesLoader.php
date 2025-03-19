@@ -1,9 +1,13 @@
 <?php
 
-namespace MHS\AdminPages;
+namespace AM\Scheduler\AdminPages;
 
-use MHS\AdminPages\Pages\{EventsAdminPage, SeriesAdminPage, TasksAdminPage};
-use MHS\Base\Traits\Singleton;
+use AM\Scheduler\AdminPages\Pages\{
+    EventsAdminPage,
+    SeriesAdminPage,
+    TasksAdminPage
+};
+use AM\Scheduler\Base\Traits\Singleton;
 
 class AdminPagesLoader
 {

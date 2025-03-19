@@ -1,11 +1,11 @@
 <?php
 
-namespace MHS\Api\V1\Endpoints;
+namespace AM\Scheduler\Api\V1\Endpoints;
 
 use WP_REST_Server;
-use MHS\Api\V1\Api;
-use MHS\Base\Traits\Singleton;
-use MHS\Series\Controllers\SeriesController;
+use AM\Scheduler\Api\V1\Api;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Series\Controllers\SeriesController;
 
 class SeriesEndpoint extends Api
 {
@@ -22,8 +22,8 @@ class SeriesEndpoint extends Api
             [
                 "methods" => WP_REST_Server::CREATABLE,
                 "callback" => [SeriesController::getInstance(), "bulkActions"],
-                "permission_callback" => fn () => true
-            ]
+                "permission_callback" => fn() => true,
+            ],
         ]);
     }
 }

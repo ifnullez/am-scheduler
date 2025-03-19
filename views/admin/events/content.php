@@ -1,4 +1,4 @@
 <?php
-use MHS\Events\Controllers\EventsController;
+use AM\Scheduler\Events\Controllers\EventsController;
 
 EventsController::getInstance()->conditionalDisplay();

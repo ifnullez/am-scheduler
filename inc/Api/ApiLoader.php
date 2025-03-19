@@ -1,9 +1,9 @@
 <?php
 
-namespace MHS\Api;
+namespace AM\Scheduler\Api;
 
-use MHS\Base\Traits\Singleton;
-use MHS\Api\V1\Api;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Api\V1\Api;
 
 class ApiLoader
 {

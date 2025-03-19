@@ -1,12 +1,13 @@
 <?php
 
-namespace MHS;
+namespace AM\Scheduler;
 
-use MHS\Base\Traits\Singleton;
-use MHS\AdminPages\AdminPagesLoader;
-use MHS\Api\ApiLoader;
-use MHS\Entities\EntitiesLoader;
-use MHS\Runner\SchedulerRunner;
+use AM\Scheduler\Base\Configs\Config;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\AdminPages\AdminPagesLoader;
+use AM\Scheduler\Api\ApiLoader;
+use AM\Scheduler\Entities\EntitiesLoader;
+use AM\Scheduler\Runner\SchedulerRunner;
 
 final class Init
 {
@@ -29,37 +30,45 @@ final class Init
         add_action("admin_enqueue_scripts", [$this, "admin_scripts"]);
     }
 
-    public function public_scripts()
+    public function public_scripts(): void
     {
         wp_enqueue_script(
-            "mh-scheduler-public-script",
-            MHS_PLUGIN_ASSETS_URL . "/dist/scripts/mh-scheduler-main.js",
+            "ams-scheduler-public-script",
+            Config::getInstance()->uri->getAssetsUri(
+                "/dist/scripts/ams-scheduler-main.js"
+            ),
             [],
-            MHS_PLUGIN_VERSION,
+            Config::getInstance()->getVersion(),
             true
         );
         wp_enqueue_style(
-            "mh-scheduler-public-style",
-            MHS_PLUGIN_ASSETS_URL . "/dist/styles/mh-scheduler-main.css",
+            "ams-scheduler-public-style",
+            Config::getInstance()->uri->getAssetsUri(
+                "/dist/styles/ams-scheduler-main.css"
+            ),
             [],
-            MHS_PLUGIN_VERSION
+            Config::getInstance()->getVersion()
         );
     }
 
-    public function admin_scripts()
+    public function admin_scripts(): void
     {
         wp_enqueue_script(
-            "mh-scheduler-admin-script",
-            MHS_PLUGIN_ASSETS_URL . "/dist/scripts/mh-scheduler-admin-main.js",
+            "ams-scheduler-admin-script",
+            Config::getInstance()->uri->getAssetsUri(
+                "/dist/scripts/ams-scheduler-admin-main.js"
+            ),
             [],
-            MHS_PLUGIN_VERSION,
+            Config::getInstance()->getVersion(),
             true
         );
         wp_enqueue_style(
-            "mh-scheduler-admin-styles",
-            MHS_PLUGIN_ASSETS_URL . "/dist/styles/mh-scheduler-admin-main.css",
+            "ams-scheduler-admin-styles",
+            Config::getInstance()->uri->getAssetsUri(
+                "/dist/styles/ams-scheduler-admin-main.css"
+            ),
             [],
-            MHS_PLUGIN_VERSION
+            Config::getInstance()->getVersion()
         );
     }
 }

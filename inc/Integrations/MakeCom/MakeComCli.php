@@ -1,6 +1,6 @@
 <?php
 
-namespace MHS\Integrations\MakeCom;
+namespace AM\Scheduler\Integrations\MakeCom;
 
 class MakeComCli
 {

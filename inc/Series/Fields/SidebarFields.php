@@ -1,11 +1,11 @@
 <?php
 
-namespace MHS\Series\Fields;
+namespace AM\Scheduler\Series\Fields;
 
-use MHS\Base\Traits\Singleton;
-use MHS\Groups\Controllers\GroupsController;
-use MHS\Members\Controllers\MembersController;
-use MHS\Rrule\Enums\ActionsEnum;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Groups\Controllers\GroupsController;
+use AM\Scheduler\Members\Controllers\MembersController;
+use AM\Scheduler\Rrule\Enums\ActionsEnum;
 
 class SidebarFields
 {
@@ -24,7 +24,7 @@ class SidebarFields
             "starting_at" => [
                 "type" => "date",
                 "label" => "Starting At",
-                "placeholder" => "Select start date"
+                "placeholder" => "Select start date",
             ],
             "action" => [
                 "id" => self::$args["table_name"],

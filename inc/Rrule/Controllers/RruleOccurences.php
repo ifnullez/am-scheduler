@@ -1,9 +1,9 @@
 <?php
 
-namespace MHS\Rrule\Controllers;
+namespace AM\Scheduler\Rrule\Controllers;
 
 use When\When;
-use MHS\Rrule\Controllers\RruleStringGenerator;
+use AM\Scheduler\Rrule\Controllers\RruleStringGenerator;
 
 class RruleOccurences
 {

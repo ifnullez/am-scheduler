@@ -1,5 +1,5 @@
 <?php
-namespace MHS\Members\Controllers;
+namespace AM\Scheduler\Members\Controllers;
 
 class MembersController
 {
@@ -10,12 +10,12 @@ class MembersController
 
         if ($users) {
             foreach ($users as $user) {
-                if(!preg_match("/\bgroup\b/", $user->user_nicename)){
+                if (!preg_match("/\bgroup\b/", $user->user_nicename)) {
                     $filtered_users[$user->ID] = $user->display_name;
                 }
             }
         }
 
-      return $filtered_users;
+        return $filtered_users;
     }
 }

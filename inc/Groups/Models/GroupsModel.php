@@ -1,11 +1,11 @@
 <?php
 
-namespace MHS\Groups\Models;
+namespace AM\Scheduler\Groups\Models;
 
-use MHS\Base\Abstractions\BaseModel;
-use MHS\Base\Traits\Singleton;
-use MHS\Entities\Entity\GroupsEntity;
-use MHS\Entities\Entity\SeriesEntity;
+use AM\Scheduler\Base\Abstractions\BaseModel;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Entities\Entity\GroupsEntity;
+use AM\Scheduler\Entities\Entity\SeriesEntity;
 
 class GroupsModel extends BaseModel
 {
@@ -20,8 +20,11 @@ class GroupsModel extends BaseModel
         $this->series_entity = SeriesEntity::getInstance();
     }
 
-    public function getSeriesBetweenDates(int $group_id, string $start_date, string $end_date): ?array
-    {
+    public function getSeriesBetweenDates(
+        int $group_id,
+        string $start_date,
+        string $end_date
+    ): ?array {
         return $this->wpdb->get_results(
             "SELECT * FROM {$this->wpdb->prefix}{$this->series_entity->table_name}
             WHERE `group_id` = '{$group_id}'

@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "source": [
-    "assets/src/scripts/mh-scheduler-admin-main.js",
-    "assets/src/scripts/mh-scheduler-main.js",
-    "assets/src/styles/mh-scheduler-admin-main.scss",
-    "assets/src/styles/mh-scheduler-main.scss"
+    "assets/src/scripts/ams-scheduler-admin-main.js",
+    "assets/src/scripts/ams-scheduler-main.js",
+    "assets/src/styles/ams-scheduler-admin-main.scss",
+    "assets/src/styles/ams-scheduler-main.scss"
   ],
   "scripts": {
     "watch": "rm -rf ./assets/dist && rm -rf ./.parcel-cache && parcel watch --dist-dir ./assets/dist",

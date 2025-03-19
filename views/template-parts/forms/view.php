@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var array<string, mixed> $data Result of BaseModel::getAllAsOptionsArray()
+ */
+?>
 <div class="wrap">
     <form method="post">
         <?php

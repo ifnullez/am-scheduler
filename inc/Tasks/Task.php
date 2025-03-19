@@ -1,10 +1,10 @@
 <?php
 
-namespace MHS\Tasks;
+namespace AM\Scheduler\Tasks;
 
-use MHS\Base\Abstractions\BaseObject;
-use MHS\Tasks\Interfaces\TaskInterface;
-use MHS\Tasks\Models\TasksModel;
+use AM\Scheduler\Base\Abstractions\BaseObject;
+use AM\Scheduler\Tasks\Interfaces\TaskInterface;
+use AM\Scheduler\Tasks\Models\TasksModel;
 
 class Task extends BaseObject implements TaskInterface
 {

@@ -1,10 +1,10 @@
 <?php
-namespace MHS\Tasks\Fields;
+namespace AM\Scheduler\Tasks\Fields;
 
-use MHS\Base\Traits\Singleton;
-use MHS\Groups\Controllers\GroupsController;
-use MHS\Members\Controllers\MembersController;
-use MHS\Rrule\Enums\ActionsEnum;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Groups\Controllers\GroupsController;
+use AM\Scheduler\Members\Controllers\MembersController;
+use AM\Scheduler\Rrule\Enums\ActionsEnum;
 
 class SidebarFields
 {

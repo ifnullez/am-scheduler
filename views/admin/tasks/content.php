@@ -1,4 +1,4 @@
 <?php
-use MHS\Tasks\Controllers\TasksController;
+use AM\Scheduler\Tasks\Controllers\TasksController;
 
 TasksController::getInstance()->conditionalDisplay();

@@ -1,8 +1,8 @@
 <?php
-namespace MHS\Rrule;
+namespace AM\Scheduler\Rrule;
 
-use MHS\Base\Traits\Singleton;
-use MHS\Rrule\Actions\RruleSendPointsMembersAction;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Rrule\Actions\RruleSendPointsMembersAction;
 
 class RruleActionsLoader
 {

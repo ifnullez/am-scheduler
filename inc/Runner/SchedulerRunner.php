@@ -1,13 +1,13 @@
 <?php
 
-namespace MHS\Runner;
+namespace AM\Scheduler\Runner;
 
-use MHS\Base\Traits\Singleton;
-use MHS\Integrations\MakeCom\MakeComCli;
-use MHS\Rrule\Enums\ActionsEnum;
-use MHS\Rrule\RruleActionsLoader;
-use MHS\Runner\Controllers\RunnerController;
-use MHS\Runner\Traits\SchedulerRunnerTrait;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Integrations\MakeCom\MakeComCli;
+use AM\Scheduler\Rrule\Enums\ActionsEnum;
+use AM\Scheduler\Rrule\RruleActionsLoader;
+use AM\Scheduler\Runner\Controllers\RunnerController;
+use AM\Scheduler\Runner\Traits\SchedulerRunnerTrait;
 
 class SchedulerRunner
 {

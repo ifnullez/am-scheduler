@@ -1,8 +1,8 @@
 <?php
 
-namespace MHS\Base\Enums;
+namespace AM\Scheduler\Base\Enums;
 
-use MHS\Base\Traits\EnumToArray;
+use AM\Scheduler\Base\Traits\EnumToArray;
 
 enum EventsSeriesStatuses: string
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace MHS\Entities\Entity;
+namespace AM\Scheduler\Entities\Entity;
 
-use MHS\Base\Helpers\StaticHelper;
-use MHS\Entities\Abstractions\AbstractEntity;
-use MHS\Entities\Interfaces\EntityInterface;
-use MHS\Entities\Traits\EntityTrait;
+use AM\Scheduler\Base\Helpers\StaticHelper;
+use AM\Scheduler\Entities\Abstractions\AbstractEntity;
+use AM\Scheduler\Entities\Interfaces\EntityInterface;
+use AM\Scheduler\Entities\Traits\EntityTrait;
 
 class EventsEntity extends AbstractEntity implements EntityInterface
 {

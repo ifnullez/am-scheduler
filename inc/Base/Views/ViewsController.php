@@ -1,7 +1,8 @@
 <?php
-namespace MHS\Base\Views;
+namespace AM\Scheduler\Base\Views;
 
-use MHS\Base\Traits\Singleton;
+use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Base\Configs\Config;
 
 class ViewsController
 {
@@ -11,7 +12,8 @@ class ViewsController
         string $template_file_path,
         mixed $data = []
     ): void {
-        $template = MHS_PLUGIN_VIEWS_PATH . $template_file_path;
+        $template =
+            Config::getInstance()->path->getViewsPath() . $template_file_path;
 
         if (!file_exists($template)) {
             throw new \Exception(

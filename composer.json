@@ -6,7 +6,7 @@
   "license": "GPL-3.0-or-later",
   "autoload": {
     "psr-4": {
-      "AM\\Scheduler\\": "inc/"
+      "AM\\Scheduler\\": "src/"
     }
   },
   "require-dev": {

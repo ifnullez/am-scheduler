@@ -1,4 +1,5 @@
 <?php
-use AM\Scheduler\Events\Controllers\EventsController;
+echo get_admin_page_title();
+// use AM\Scheduler\Events\EventsController;
 
-EventsController::getInstance()->conditionalDisplay();
+// EventsController::getInstance()->conditionalDisplay();

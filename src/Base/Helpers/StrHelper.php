@@ -14,6 +14,14 @@ class StrHelper
         $this->data = $this->normalizeInput($input);
     }
 
+    public function stripSpacesAround(): self
+    {
+        if (is_string($this->data)) {
+            $this->data = trim($this->data);
+        }
+        return $this;
+    }
+
     /**
      * Normalizes whitespace in the string by removing excess spaces
      *
@@ -24,6 +32,17 @@ class StrHelper
         if (is_string($this->data)) {
             $this->data = trim(preg_replace("/\s+/", " ", $this->data));
         }
+        return $this;
+    }
+
+    public function stripEmojis(?string $text = null): self
+    {
+        $this->data = str_replace("?", "{%}", $this->data);
+        $this->data = mb_convert_encoding($this->data, "ISO-8859-1", "UTF-8");
+        $this->data = mb_convert_encoding($this->data, "UTF-8", "ISO-8859-1");
+        $this->data = preg_replace("/(\s?\?\s?)/", " ", $this->data);
+        $this->data = str_replace("{%}", "?", $this->data);
+
         return $this;
     }
 
@@ -104,6 +123,38 @@ class StrHelper
     public function get(): mixed
     {
         return $this->normalizeOutput();
+    }
+
+    public function dropWords(?string $words = null): self
+    {
+        if (is_string($this->data)) {
+            $this->data = str_replace([$words], [], $this->data);
+        }
+        return $this;
+    }
+
+    public function toLower(): self
+    {
+        if (is_string($this->data)) {
+            $this->data = strtolower($this->data);
+        }
+        return $this;
+    }
+
+    public function toUpper(): self
+    {
+        if (is_string($this->data)) {
+            $this->data = strtoupper($this->data);
+        }
+        return $this;
+    }
+
+    public function capitalize(): self
+    {
+        if (is_string($this->data)) {
+            $this->data = ucfirst($this->data);
+        }
+        return $this;
     }
 
     /**

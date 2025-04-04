@@ -1,6 +1,6 @@
 <?php
 
-namespace AM\Scheduler\Migrations\Schemas;
+namespace AM\Scheduler\Entities\Schemas;
 
 use AM\Scheduler\Base\Contracts\Abstractions\AbstractContract;
 use AM\Scheduler\Base\Contracts\Interfaces\ContractInterface;

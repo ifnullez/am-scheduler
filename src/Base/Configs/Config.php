@@ -6,14 +6,15 @@
 
 namespace AM\Scheduler\Base\Configs;
 
+use AM\Scheduler\Base\Configs\Parts\{Path, Uri};
 use AM\Scheduler\Base\Traits\Singleton;
 
 class Config
 {
     use Singleton;
 
-    public ?Path $path;
-    public ?Uri $uri;
+    private ?Path $path;
+    private ?Uri $uri;
     private ?string $root_file;
     private ?string $root_dir;
 
@@ -40,5 +41,12 @@ class Config
                 "Version"
             ]
             : null;
+    }
+
+    public function __get(string $name): mixed
+    {
+        if (property_exists($this, $name)) {
+            return $this->$name;
+        }
     }
 }

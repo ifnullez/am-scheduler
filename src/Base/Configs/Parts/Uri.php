@@ -4,7 +4,7 @@
  * Path for the plugin
  */
 
-namespace AM\Scheduler\Base\Configs;
+namespace AM\Scheduler\Base\Configs\Parts;
 
 use AM\Scheduler\Base\Traits\Singleton;
 

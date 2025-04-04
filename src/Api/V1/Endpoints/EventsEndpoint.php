@@ -90,6 +90,10 @@ class EventsEndpoint extends WP_REST_Controller
             [
                 "methods" => WP_REST_Server::READABLE,
                 "callback" => [$this, "get_public_item_schema"],
+                "permission_callback" => [
+                    $this,
+                    "create_item_permissions_check",
+                ],
             ]
         );
     }

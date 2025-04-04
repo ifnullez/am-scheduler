@@ -34,7 +34,7 @@ trait ContractSchemaTrait
         return true;
     }
 
-    // public function schema(): string {}
+    public function schema(): string {}
 
     public function down(): ?bool
     {

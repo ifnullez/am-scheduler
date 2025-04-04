@@ -1,11 +1,11 @@
 <?php
 
-namespace AM\Scheduler\Migrations;
+namespace AM\Scheduler\Entities;
 
 use AM\Scheduler\Base\Traits\Singleton;
-use AM\Scheduler\Migrations\Schemas\EventSchema;
+use AM\Scheduler\Entities\Schemas\EventSchema;
 
-final class MigrationsLoader
+final class EntitiesLoader
 {
     use Singleton;
 

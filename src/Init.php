@@ -6,7 +6,7 @@ use AM\Scheduler\Api\ApiLoader;
 use AM\Scheduler\Base\Configs\Config;
 use AM\Scheduler\Base\Traits\Singleton;
 use AM\Scheduler\AdminPages\AdminPagesLoader;
-use AM\Scheduler\Migrations\MigrationsLoader;
+use AM\Scheduler\Entities\EntitiesLoader;
 // use AM\Scheduler\Api\ApiLoader;
 // use AM\Scheduler\Entities\EntitiesLoader;
 // use AM\Scheduler\Runner\SchedulerRunner;
@@ -16,14 +16,14 @@ final class Init
     use Singleton;
 
     private ?ApiLoader $api;
-    private ?MigrationsLoader $migrations;
+    private ?EntitiesLoader $migrations;
     private AdminPagesLoader $admin_pages;
     // private SchedulerRunner $runner;
     // private ApiLoader $api;
 
     private function __construct()
     {
-        $this->migrations = MigrationsLoader::getInstance();
+        $this->migrations = EntitiesLoader::getInstance();
         $this->api = ApiLoader::getInstance();
         // $this->entities = EntitiesLoader::getInstance();
         $this->admin_pages = AdminPagesLoader::getInstance();

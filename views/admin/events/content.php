@@ -1,5 +1,16 @@
+<div class="wrap">
 <?php
-echo get_admin_page_title();
-// use AM\Scheduler\Events\EventsController;
+use AM\Scheduler\Event\Controllers\EventController;
+use AM\Scheduler\Base\Views\ViewsController;
 
+ViewsController::loadTemplate(
+    "/template-parts/components/headers/list-header.php",
+    [
+        "entity" => EventController::getInstance(),
+    ]
+);
+
+// dump(EventsController::getInstance());
 // EventsController::getInstance()->conditionalDisplay();
+?>
+</div>

@@ -1,7 +1,7 @@
 <?php
-namespace AM\Scheduler\AdminPages\Pages;
+namespace AM\Scheduler\Admin\Pages;
 
-use AM\Scheduler\AdminPages\Abstractions\AbstractAdminPage;
+use AM\Scheduler\Admin\Abstractions\AbstractAdminPage;
 use AM\Scheduler\Base\Traits\Singleton;
 use AM\Scheduler\Base\Views\ViewsController;
 

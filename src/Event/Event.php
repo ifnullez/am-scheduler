@@ -1,5 +1,5 @@
 <?php
-namespace AM\Scheduler\Events;
+namespace AM\Scheduler\Event;
 
 use AM\Scheduler\Base\Helpers\ObjectHelper;
 

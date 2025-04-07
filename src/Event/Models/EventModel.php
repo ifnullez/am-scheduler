@@ -1,11 +1,11 @@
 <?php
-namespace AM\Scheduler\Events;
+namespace AM\Scheduler\Event;
 
 use AM\Scheduler\Base\Entities\AbstractEntity;
 use AM\Scheduler\Base\Models\AbstractBaseModel;
 use AM\Scheduler\Events\Event;
 
-class EventsModel extends AbstractBaseModel
+class EventModel extends AbstractBaseModel
 {
     public function __construct()
     {

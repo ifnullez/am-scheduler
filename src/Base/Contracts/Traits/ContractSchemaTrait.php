@@ -52,9 +52,16 @@ trait ContractSchemaTrait
     public function isIndexesExists(array $indexes): ?bool
     {
         if (!empty($indexes)) {
+            $sql = "SHOW INDEXES FROM `%s%s`
+            WHERE column_name = '%s';";
             foreach ($indexes as $index_name) {
                 $funded_indexes = $this->wpdb->query(
-                    "SHOW INDEXES FROM `{$this->wpdb->prefix}{$this->table_name}` WHERE Column_name = '{$index_name}';"
+                    $this->wpdb->prepare(
+                        $sql,
+                        $this->wpdb->prefix,
+                        $this->table_name,
+                        $index_name
+                    )
                 );
                 if (!empty($funded_indexes)) {
                     return true;
@@ -68,11 +75,18 @@ trait ContractSchemaTrait
     public function isConstraintExists(string $constraint_name): ?bool
     {
         if (!empty($constraint_name)) {
-            $constraint = $this->wpdb->get_results(
-                "SELECT COUNT(*) AS constraint_exists
+            $sql = "SELECT 1 AS constraint_exists
                 FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
-                WHERE TABLE_NAME = '{$this->wpdb->prefix}{$this->table_name}'
-                AND CONSTRAINT_NAME = '{$constraint_name}' LIMIT 1;"
+                WHERE TABLE_NAME = '%s%s'
+                AND CONSTRAINT_NAME = '%s'
+                LIMIT 1;";
+            $constraint = $this->wpdb->get_results(
+                $this->wpdb->prepare(
+                    $sql,
+                    $this->wpdb->prefix,
+                    $this->table_name,
+                    $constraint_name
+                )
             );
 
             $finded_count = array_shift($constraint)->constraint_exists;

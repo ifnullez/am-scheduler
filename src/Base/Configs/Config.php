@@ -6,7 +6,7 @@
 
 namespace AM\Scheduler\Base\Configs;
 
-use AM\Scheduler\Base\Configs\Parts\{Path, Uri};
+use AM\Scheduler\Base\Configs\Constants\{Path, Uri};
 use AM\Scheduler\Base\Helpers\StrHelper;
 use AM\Scheduler\Base\Traits\Singleton;
 
@@ -25,7 +25,9 @@ class Config
     {
         $this->root_file = $root_file;
         $this->root_dir = $root_dir;
+
         $base_name = $this->getDataFromPluginDefinitionComment("Plugin Name");
+
         $this->base_path = !empty($base_name)
             ? (new StrHelper($base_name))
                 ->stripEmojis()

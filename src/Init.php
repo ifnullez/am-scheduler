@@ -5,7 +5,7 @@ namespace AM\Scheduler;
 use AM\Scheduler\Api\ApiLoader;
 use AM\Scheduler\Base\Configs\Config;
 use AM\Scheduler\Base\Traits\Singleton;
-use AM\Scheduler\AdminPages\AdminPagesLoader;
+use AM\Scheduler\Admin\AdminLoader;
 use AM\Scheduler\Entities\EntitiesLoader;
 // use AM\Scheduler\Api\ApiLoader;
 // use AM\Scheduler\Entities\EntitiesLoader;
@@ -17,7 +17,7 @@ final class Init
 
     private ?ApiLoader $api;
     private ?EntitiesLoader $migrations;
-    private AdminPagesLoader $admin_pages;
+    private AdminLoader $admin_loader;
     // private SchedulerRunner $runner;
     // private ApiLoader $api;
 
@@ -26,7 +26,7 @@ final class Init
         $this->migrations = EntitiesLoader::getInstance();
         $this->api = ApiLoader::getInstance();
         // $this->entities = EntitiesLoader::getInstance();
-        $this->admin_pages = AdminPagesLoader::getInstance();
+        $this->admin_loader = AdminLoader::getInstance();
         // $this->runner = SchedulerRunner::getInstance();
 
         // load scripts and styles

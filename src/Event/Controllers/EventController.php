@@ -1,31 +1,31 @@
 <?php
-namespace AM\Scheduler\Events;
+namespace AM\Scheduler\Event\Controllers;
 
-use AM\Scheduler\AdminPages\Pages\EventsAdminPage;
-use AM\Scheduler\Base\Abstractions\AbstractItemController;
+use AM\Scheduler\Admin\Pages\EventsAdminPage;
+// use AM\Scheduler\Base\Abstractions\AbstractItemController;
 use AM\Scheduler\Base\Traits\Singleton;
-use AM\Scheduler\Base\Views\ViewsController;
-use AM\Scheduler\Entities\Event;
-use AM\Scheduler\Models\EventModel;
-use AM\Scheduler\ListTables\EventsListTable;
-use AM\Scheduler\Events\Fields\{EditableFields, SidebarFields};
+// use AM\Scheduler\Base\Views\ViewsController;
+// use AM\Scheduler\Entities\Event;
+// use AM\Scheduler\Models\EventModel;
+// use AM\Scheduler\ListTables\EventsListTable;
+// use AM\Scheduler\Events\Fields\{EditableFields, SidebarFields};
 use AM\Scheduler\Rrule\Controllers\RruleOccurences;
-use AM\Scheduler\Models\SeriesModel;
-use AM\Scheduler\Models\TasksModel;
+// use AM\Scheduler\Models\SeriesModel;
+// use AM\Scheduler\Models\TasksModel;
 
-class EventsController
+class EventController
 {
     use Singleton;
 
-    private EventModel $eventModel;
-    private SeriesModel $seriesModel;
-    private TasksModel $tasksModel;
+    // private EventModel $eventModel;
+    // private SeriesModel $seriesModel;
+    // private TasksModel $tasksModel;
     private ?string $slug;
 
     private function __construct()
     {
-        dump(EventsAdminPage::getInstance()->slug);
-        // $this->slug = EventsAdminPage::getInstance()->slug;
+        $this->slug = EventsAdminPage::getInstance()->slug;
+
         // $this->table_name = "events"; // Matches EventModel table name
         // $this->eventModel = new EventModel();
         // $this->seriesModel = new SeriesModel();
@@ -43,47 +43,60 @@ class EventsController
         // ])::getFields();
     }
 
+    // public function __get(string $name): mixed
+    // {
+    //     if (property_exists($this, $name)) {
+    //         return $this->$name;
+    //     }
+    //     return null;
+    // }
+
+    public function rootPageUrl(): string
+    {
+        return admin_url("/admin.php?page={$this->slug}");
+    }
+
     public function list(): void
     {
-        ViewsController::loadTemplate("/template-parts/title-button.php", [
-            "controller" => $this::getInstance(),
-        ]);
-        ViewsController::loadTemplate("/template-parts/forms/view.php", [
-            "table" => new EventsListTable(),
-            "controller" => $this::getInstance(),
-        ]);
+        // ViewsController::loadTemplate("/template-parts/title-button.php", [
+        //     "controller" => $this::getInstance(),
+        // ]);
+        // ViewsController::loadTemplate("/template-parts/forms/view.php", [
+        //     "table" => new EventsListTable(),
+        //     "controller" => $this::getInstance(),
+        // ]);
     }
 
     public function delete(int $id): void
     {
-        if ($this->eventModel->delete($id)) {
-            wp_redirect($this->rootPageUrl());
-            exit();
-        }
+        // if ($this->eventModel->delete($id)) {
+        //     wp_redirect($this->rootPageUrl());
+        //     exit();
+        // }
     }
 
     public function edit(int $id): void
     {
-        $event = $this->eventModel->findBy("id", $id);
-        ViewsController::loadTemplate("/template-parts/title-button.php", [
-            "controller" => $this::getInstance(),
-            "title" => "Edit Event",
-        ]);
-        ViewsController::loadTemplate("/admin/events/actions/edit.php", [
-            "item" => $event,
-            "controller" => $this::getInstance(),
-        ]);
+        // $event = $this->eventModel->findBy("id", $id);
+        // ViewsController::loadTemplate("/template-parts/title-button.php", [
+        //     "controller" => $this::getInstance(),
+        //     "title" => "Edit Event",
+        // ]);
+        // ViewsController::loadTemplate("/admin/events/actions/edit.php", [
+        //     "item" => $event,
+        //     "controller" => $this::getInstance(),
+        // ]);
     }
 
     public function new(): void
     {
-        ViewsController::loadTemplate("/template-parts/title-button.php", [
-            "controller" => $this::getInstance(),
-            "title" => "New Event",
-        ]);
-        ViewsController::loadTemplate("/admin/events/actions/new.php", [
-            "controller" => $this::getInstance(),
-        ]);
+        // ViewsController::loadTemplate("/template-parts/title-button.php", [
+        //     "controller" => $this::getInstance(),
+        //     "title" => "New Event",
+        // ]);
+        // ViewsController::loadTemplate("/admin/events/actions/new.php", [
+        //     "controller" => $this::getInstance(),
+        // ]);
     }
     /**
      * @param array<int,mixed> $data

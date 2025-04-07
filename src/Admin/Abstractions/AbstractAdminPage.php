@@ -1,5 +1,5 @@
 <?php
-namespace AM\Scheduler\AdminPages\Abstractions;
+namespace AM\Scheduler\Admin\Abstractions;
 
 abstract class AbstractAdminPage
 {

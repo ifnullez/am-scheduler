@@ -80,7 +80,7 @@ class ObjectHelper
 
         return is_object($this->data)
             ? get_object_vars($this->data)
-            : (array) $this->data;
+            : $this->data;
     }
 
     /**

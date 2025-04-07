@@ -1,15 +1,15 @@
 <?php
 
-namespace AM\Scheduler\AdminPages;
+namespace AM\Scheduler\Admin;
 
 use AM\Scheduler\Base\Traits\Singleton;
-use AM\Scheduler\AdminPages\Pages\{
+use AM\Scheduler\Admin\Pages\{
     EventsAdminPage,
     // SeriesAdminPage,
     TasksAdminPage
 };
 
-class AdminPagesLoader
+class AdminLoader
 {
     use Singleton;
 

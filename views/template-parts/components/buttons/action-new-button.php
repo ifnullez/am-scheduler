@@ -4,6 +4,6 @@
  */
 ?>
 <a href="<?php echo $entity->rootPageUrl() .
-    "&action=new"; ?>" class="mh-button-admin mh-button-admin--blue mh-admin__events--new">
+    "&action=new"; ?>" class="ams-button ams-button__admin--green">
     <?php _e("Add New", "ams"); ?>
 </a>

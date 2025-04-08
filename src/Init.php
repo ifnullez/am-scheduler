@@ -17,17 +17,13 @@ final class Init
 
     private ?ApiLoader $api;
     private ?EntitiesLoader $migrations;
-    private AdminLoader $admin_loader;
-    // private SchedulerRunner $runner;
-    // private ApiLoader $api;
+    private ?AdminLoader $admin_loader;
 
     private function __construct()
     {
         $this->migrations = EntitiesLoader::getInstance();
         $this->api = ApiLoader::getInstance();
-        // $this->entities = EntitiesLoader::getInstance();
         $this->admin_loader = AdminLoader::getInstance();
-        // $this->runner = SchedulerRunner::getInstance();
 
         // load scripts and styles
         add_action("wp_enqueue_scripts", [$this, "public_scripts"]);

@@ -20,7 +20,7 @@ class Uri
     private ?string $root_url;
     private ?string $theme_url;
 
-    private function __construct(Config $config = null)
+    private function __construct(Config $config)
     {
         // root config
         $this->config = $config;

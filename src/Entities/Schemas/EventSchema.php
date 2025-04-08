@@ -10,8 +10,20 @@ class EventSchema extends AbstractContract implements ContractInterface
 {
     use ContractSchemaTrait;
 
-    public function up(): ?bool {}
-    public function down(): ?bool {}
-    public function schema(): string {}
-    public function update(): ?array {}
+    public function up(): ?bool
+    {
+        return false;
+    }
+    public function down(): ?bool
+    {
+        return false;
+    }
+    public function schema(): ?string
+    {
+        return null;
+    }
+    public function update(): ?array
+    {
+        return null;
+    }
 }

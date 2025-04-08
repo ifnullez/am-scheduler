@@ -1,3 +1,3 @@
-@import "./admin/_base.scss";
-@import "./admin/_actions/_entity_content.scss";
-@import "./admin/_buttons.scss";
+@use "./admin/base";
+@use "./admin/_components/buttons";
+@use "./admin/_actions/entity_content";

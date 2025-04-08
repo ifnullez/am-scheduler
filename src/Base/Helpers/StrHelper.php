@@ -9,7 +9,7 @@ class StrHelper
     /**
      * @param mixed $input Initial input (string or ArraysHelper)
      */
-    public function __construct(mixed $input)
+    public function __construct(string|ArraysHelper $input)
     {
         $this->data = $this->normalizeInput($input);
     }
@@ -35,7 +35,7 @@ class StrHelper
         return $this;
     }
 
-    public function stripEmojis(?string $text = null): self
+    public function stripEmojis(): self
     {
         $this->data = str_replace("?", "{%}", $this->data);
         $this->data = mb_convert_encoding($this->data, "ISO-8859-1", "UTF-8");
@@ -153,6 +153,30 @@ class StrHelper
     {
         if (is_string($this->data)) {
             $this->data = ucfirst($this->data);
+        }
+        return $this;
+    }
+
+    public function stripLeft(?string $char): self
+    {
+        if (is_string($this->data)) {
+            $this->data = ltrim($this->data, $char);
+        }
+        return $this;
+    }
+
+    public function stripRight(?string $char): self
+    {
+        if (is_string($this->data)) {
+            $this->data = rtrim($this->data, $char);
+        }
+        return $this;
+    }
+
+    public function stripBoth(?string $char): self
+    {
+        if (is_string($this->data)) {
+            $this->data = trim($this->data, $char);
         }
         return $this;
     }

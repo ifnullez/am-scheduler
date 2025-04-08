@@ -3,9 +3,10 @@
 namespace AM\Scheduler\Api\V1\Endpoints;
 
 use AM\Scheduler\Api\ApiLoader;
-use AM\Scheduler\Api\V1\Api;
 use AM\Scheduler\Base\Traits\Singleton;
+use WP_Error;
 use WP_REST_Controller;
+use WP_REST_Response;
 use WP_REST_Server;
 
 class EventsEndpoint extends WP_REST_Controller
@@ -148,7 +149,8 @@ class EventsEndpoint extends WP_REST_Controller
         $item = $this->prepare_item_for_database($request);
 
         if (function_exists("slug_some_function_to_create_item")) {
-            $data = slug_some_function_to_create_item($item);
+            /** TODO: need to implement $data */
+            $data = null;
             if (is_array($data)) {
                 return new WP_REST_Response($data, 200);
             }
@@ -170,7 +172,8 @@ class EventsEndpoint extends WP_REST_Controller
         $item = $this->prepare_item_for_database($request);
 
         if (function_exists("slug_some_function_to_update_item")) {
-            $data = slug_some_function_to_update_item($item);
+            /** TODO: need to implement $data */
+            $data = null;
             if (is_array($data)) {
                 return new WP_REST_Response($data, 200);
             }
@@ -192,7 +195,8 @@ class EventsEndpoint extends WP_REST_Controller
         $item = $this->prepare_item_for_database($request);
 
         if (function_exists("slug_some_function_to_delete_item")) {
-            $deleted = slug_some_function_to_delete_item($item);
+            /** TODO: need to implement $data */
+            $deleted = null;
             if ($deleted) {
                 return new WP_REST_Response(true, 200);
             }

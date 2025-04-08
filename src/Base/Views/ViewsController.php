@@ -4,6 +4,7 @@ namespace AM\Scheduler\Base\Views;
 
 use AM\Scheduler\Base\Traits\Singleton;
 use AM\Scheduler\Base\Configs\Config;
+use AM\Scheduler\Base\Helpers\StrHelper;
 use RuntimeException;
 
 class ViewsController
@@ -43,5 +44,25 @@ class ViewsController
         string $templateFilePath
     ): string {
         return Config::getInstance()->path->getViewsPath() . $templateFilePath;
+    }
+
+    public static function getScreen(): ?ViewsScreenEnum
+    {
+        return ViewsScreenEnum::tryFrom(
+            !empty($_GET["action"]) ? $_GET["action"] : ""
+        ) ?? ViewsScreenEnum::LIST;
+    }
+
+    public static function getScreenTitle(): ?string
+    {
+        return self::getScreen()->name !== "LIST"
+            ? (new StrHelper(esc_html(self::getScreen()->name)))
+                    ->toLower()
+                    ->capitalize() .
+                    " " .
+                    (new StrHelper(
+                        esc_html(get_admin_page_title())
+                    ))->stripRight("s")
+            : esc_html(get_admin_page_title());
     }
 }

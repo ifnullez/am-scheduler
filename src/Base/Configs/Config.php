@@ -1,18 +1,14 @@
 <?php
-
-/**
- * Main plugin config class
- */
-
 namespace AM\Scheduler\Base\Configs;
 
 use AM\Scheduler\Base\Configs\Constants\{Path, Uri};
 use AM\Scheduler\Base\Helpers\StrHelper;
+use AM\Scheduler\Base\Traits\GetterTrait;
 use AM\Scheduler\Base\Traits\Singleton;
 
 class Config
 {
-    use Singleton;
+    use Singleton, GetterTrait;
 
     private ?Path $path;
     private ?Uri $uri;
@@ -59,12 +55,5 @@ class Config
         return $this->root_file
             ? get_file_data($this->root_file, ["param" => $param])["param"]
             : null;
-    }
-
-    public function __get(string $name): mixed
-    {
-        if (property_exists($this, $name)) {
-            return $this->$name;
-        }
     }
 }

@@ -21,5 +21,6 @@ final class EntitiesLoader
         if (property_exists($this, $name)) {
             return $this->$name;
         }
+        return null;
     }
 }

@@ -34,8 +34,6 @@ trait ContractSchemaTrait
         return true;
     }
 
-    public function schema(): string {}
-
     public function down(): ?bool
     {
         if (empty($this->table_name)) {
@@ -65,11 +63,10 @@ trait ContractSchemaTrait
                 );
                 if (!empty($funded_indexes)) {
                     return true;
-                } else {
-                    return false;
                 }
             }
         }
+        return false;
     }
 
     public function isConstraintExists(string $constraint_name): ?bool
@@ -94,7 +91,7 @@ trait ContractSchemaTrait
             if (intval($finded_count) > 0) {
                 return true;
             }
-            return false;
         }
+        return false;
     }
 }

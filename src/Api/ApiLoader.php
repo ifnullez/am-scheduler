@@ -3,11 +3,12 @@
 namespace AM\Scheduler\Api;
 
 use AM\Scheduler\Api\V1\Api;
+use AM\Scheduler\Base\Traits\GetterTrait;
 use AM\Scheduler\Base\Traits\Singleton;
 
 final class ApiLoader
 {
-    use Singleton;
+    use Singleton, GetterTrait;
 
     private ?Api $api;
     private ?string $version = "v1";
@@ -17,12 +18,5 @@ final class ApiLoader
     {
         $this->namespace = "{$this->namespace}/{$this->version}";
         $this->api = Api::getInstance($this);
-    }
-
-    public function __get(string $name): mixed
-    {
-        if (property_exists($this, $name)) {
-            return $this->$name;
-        }
     }
 }

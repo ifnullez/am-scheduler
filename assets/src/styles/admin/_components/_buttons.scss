@@ -1,0 +1,33 @@
+.ams-button {
+    position: relative;
+    padding: 10px 22px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    font-weight: 500;
+    &__admin {
+        &--purple {
+            color: #fff;
+            background: #7d2ae8;
+            &:hover {
+                color: #fff;
+            }
+        }
+        &--blue {
+            color: #fff;
+            background: #0071e2;
+            &:hover {
+                color: #fff;
+            }
+        }
+        &--green {
+            color: #fff;
+            background: #4f6f52;
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+}

@@ -1,6 +1,7 @@
 <?php
 namespace AM\Scheduler\Base\Contracts\Traits;
 
+use AM\Scheduler\Base\QueryBuilder\MysqlQueryBuilder;
 use AM\Scheduler\Base\Traits\Singleton;
 use Exception;
 use wpdb;
@@ -72,25 +73,28 @@ trait ContractSchemaTrait
     public function isConstraintExists(string $constraint_name): ?bool
     {
         if (!empty($constraint_name)) {
-            $sql = "SELECT 1 AS constraint_exists
-                FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
-                WHERE TABLE_NAME = '%s%s'
-                AND CONSTRAINT_NAME = '%s'
-                LIMIT 1;";
-            $constraint = $this->wpdb->get_results(
-                $this->wpdb->prepare(
-                    $sql,
-                    $this->wpdb->prefix,
-                    $this->table_name,
-                    $constraint_name
-                )
-            );
+            $sql = (new MysqlQueryBuilder())
+                ->select("{$this->wpdb->prefix}{$this->table_name}", [1])
+                ->getSQL();
+            // "SELECT 1 AS constraint_exists
+            //     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+            //     WHERE TABLE_NAME = '%s%s'
+            //     AND CONSTRAINT_NAME = '%s'
+            //     LIMIT 1;";
+            // $constraint = $this->wpdb->get_results(
+            //     $this->wpdb->prepare(
+            //         $sql,
+            //         $this->wpdb->prefix,
+            //         $this->table_name,
+            //         $constraint_name
+            //     )
+            // );
 
-            $finded_count = array_shift($constraint)->constraint_exists;
+            // $finded_count = array_shift($constraint)->constraint_exists;
 
-            if (intval($finded_count) > 0) {
-                return true;
-            }
+            // if (intval($finded_count) > 0) {
+            //     return true;
+            // }
         }
         return false;
     }

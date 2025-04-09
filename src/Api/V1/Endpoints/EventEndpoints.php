@@ -9,16 +9,15 @@ use WP_REST_Controller;
 use WP_REST_Response;
 use WP_REST_Server;
 
-class EventsEndpoint extends WP_REST_Controller
+class EventEndpoints extends WP_REST_Controller
 {
     use Singleton;
 
     private ?ApiLoader $loader;
-    private ?string $endpoint;
+    private ?string $endpoint = "event";
 
     private function __construct(?ApiLoader $loader = null)
     {
-        $this->endpoint = "event";
         $this->loader = $loader;
         add_action("rest_api_init", [$this, "register_routes"]);
     }

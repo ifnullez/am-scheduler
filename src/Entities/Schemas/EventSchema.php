@@ -10,17 +10,34 @@ class EventSchema extends AbstractContract implements ContractInterface
 {
     use ContractSchemaTrait;
 
-    public function up(): ?bool
-    {
-        return false;
-    }
-    public function down(): ?bool
-    {
-        return false;
-    }
+    protected ?string $table_name = "events";
+
     public function schema(): ?string
     {
-        return null;
+        return $this->queryBuilder
+            ->create(
+                "{$this->wpdb->prefix}{$this->plugin_slug}_{$this->table_name}",
+                ["PRIMARY KEY (`id`)"],
+                true
+            )
+            ->addColumn("id", "BIGINT UNSIGNED", [
+                "nullable" => false,
+                "auto_increment" => true,
+            ])
+            ->addColumn("title", "MEDIUMTEXT", ["nullable" => false])
+            ->addColumn("description", "LONGTEXT", ["nullable" => true])
+            ->addColumn("short_description", "MEDIUMTEXT", ["nullable" => true])
+            ->addColumn("task_id", "BIGINT", ["nullable" => false])
+            ->addColumn("rrule", "LONGTEXT", ["nullable" => false])
+            ->addColumn("created_at", "DATETIME", [
+                "nullable" => false,
+                "default" => "CURRENT_TIMESTAMP",
+            ])
+            ->addColumn("updated_at", "DATETIME", [
+                "nullable" => false,
+                "default" => "CURRENT_TIMESTAMP",
+            ])
+            ->getSQL();
     }
     public function update(): ?array
     {

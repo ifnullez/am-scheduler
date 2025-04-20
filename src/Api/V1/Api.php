@@ -10,10 +10,10 @@ class Api
 {
     use Singleton;
 
-    private ?ApiLoader $loader;
-    private ?array $endpoints;
+    private ApiLoader $loader;
+    private array $endpoints = [];
 
-    private function __construct(?ApiLoader $loader = null)
+    private function __construct(ApiLoader $loader)
     {
         $this->loader = $loader;
         $this->endpoints = [EventEndpoints::getInstance($this->loader)];

@@ -16,6 +16,7 @@ class Config
     private ?string $root_dir;
     private ?string $base_path;
     private ?string $namespace_prefix = "AM";
+    private ?string $plugin_slug = "ams";
 
     private function __construct(?string $root_file, ?string $root_dir)
     {

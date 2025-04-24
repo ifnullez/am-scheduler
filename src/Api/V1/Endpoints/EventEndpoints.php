@@ -13,10 +13,10 @@ class EventEndpoints extends WP_REST_Controller
 {
     use Singleton;
 
-    private ?ApiLoader $loader;
-    private ?string $endpoint = "event";
+    private ApiLoader $loader;
+    private string $endpoint = "event";
 
-    private function __construct(?ApiLoader $loader = null)
+    private function __construct(ApiLoader $loader)
     {
         $this->loader = $loader;
         add_action("rest_api_init", [$this, "register_routes"]);

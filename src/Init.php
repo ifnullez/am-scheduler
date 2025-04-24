@@ -6,6 +6,7 @@ use AM\Scheduler\Api\ApiLoader;
 use AM\Scheduler\Base\Configs\Config;
 use AM\Scheduler\Base\Traits\Singleton;
 use AM\Scheduler\Admin\AdminLoader;
+use AM\Scheduler\Base\Traits\GetterTrait;
 use AM\Scheduler\Entities\EntitiesLoader;
 // use AM\Scheduler\Api\ApiLoader;
 // use AM\Scheduler\Entities\EntitiesLoader;
@@ -13,14 +14,16 @@ use AM\Scheduler\Entities\EntitiesLoader;
 
 final class Init
 {
-    use Singleton;
+    use Singleton, GetterTrait;
 
     private ?ApiLoader $api;
     private ?EntitiesLoader $migrations;
     private ?AdminLoader $admin_loader;
+    private ?string $plugin_slug;
 
     private function __construct()
     {
+        $this->plugin_slug = Config::getinstance()->plugin_slug;
         $this->migrations = EntitiesLoader::getInstance();
         $this->api = ApiLoader::getInstance();
         $this->admin_loader = AdminLoader::getInstance();
@@ -33,7 +36,7 @@ final class Init
     public function public_scripts(): void
     {
         wp_enqueue_script(
-            "ams-scheduler-public-script",
+            "{$this->plugin_slug}-scheduler-public-script",
             Config::getInstance()->uri->getAssetsUri(
                 "/dist/scripts/ams-scheduler-main.js"
             ),
@@ -42,7 +45,7 @@ final class Init
             true
         );
         wp_enqueue_style(
-            "ams-scheduler-public-style",
+            "{$this->plugin_slug}-scheduler-public-style",
             Config::getInstance()->uri->getAssetsUri(
                 "/dist/styles/ams-scheduler-main.css"
             ),
@@ -54,7 +57,7 @@ final class Init
     public function admin_scripts(): void
     {
         wp_enqueue_script(
-            "ams-scheduler-admin-script",
+            "{$this->plugin_slug}-scheduler-admin-script",
             Config::getInstance()->uri->getAssetsUri(
                 "/dist/scripts/ams-scheduler-admin-main.js"
             ),
@@ -63,7 +66,7 @@ final class Init
             true
         );
         wp_enqueue_style(
-            "ams-scheduler-admin-styles",
+            "{$this->plugin_slug}-scheduler-admin-styles",
             Config::getInstance()->uri->getAssetsUri(
                 "/dist/styles/ams-scheduler-admin-main.css"
             ),

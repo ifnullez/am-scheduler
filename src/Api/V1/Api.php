@@ -4,7 +4,7 @@ namespace AM\Scheduler\Api\V1;
 
 use AM\Scheduler\Api\ApiLoader;
 use AM\Scheduler\Api\V1\Endpoints\EventEndpoints;
-use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Utils\Traits\Singleton;
 
 class Api
 {

@@ -3,8 +3,7 @@
 namespace AM\Scheduler\Api;
 
 use AM\Scheduler\Api\V1\Api;
-use AM\Scheduler\Base\Traits\GetterTrait;
-use AM\Scheduler\Base\Traits\Singleton;
+use AM\Scheduler\Utils\Traits\{Singleton, GetterTrait};
 
 final class ApiLoader
 {
